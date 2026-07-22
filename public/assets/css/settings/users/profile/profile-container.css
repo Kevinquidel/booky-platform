@@ -1,0 +1,164 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* Contenedor principal del perfil */
+.profile-container {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Información del perfil */
+.profile-info {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Pestañas de navegación */
+.tab {
+    display: flex;
+    background-color: #3498db;
+    border-radius: 0 0 10px 10px;
+    overflow: hidden;
+}
+
+/* Estilo de los botones de las pestañas */
+.tab button {
+    background-color: transparent;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+/* Cambio de color al pasar el ratón sobre las pestañas */
+.tab button:hover {
+    background-color: #2980b9;
+}
+
+/* Contenido de las pestañas */
+.tabcontent {
+    display: none;
+    padding: 20px;
+    height: auto;
+    overflow-y: auto;
+}
+
+/* Estilos generales de las secciones del perfil */
+.profile-section {
+    padding: 20px;
+}
+
+/* Títulos de secciones */
+h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+/* Detalles de la biografía */
+.bio-details {
+    margin-bottom: 20px;
+    display: flex;
+}
+
+/* Columnas para la información personal en la sección de biografía */
+.column {
+    flex: 1;
+    margin-right: 20px;
+}
+
+/* Sección de Red Social */
+.profile-section.red-social-section {
+    overflow-x: hidden;
+    margin-bottom: 20px;
+}
+
+/* Detalles del usuario */
+.user-details {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+    text-align: center; /* Alineación centrada del texto */
+}
+
+/* Contenedor de botones y contadores de Red Social */
+.social-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; /* Ajusta el espacio entre elementos */
+}
+
+/* Contadores y botones de Red Social */
+.counters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Estilo de los contadores */
+.counter {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Estilo de los botones de contadores */
+.counter-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+/* Estilo para el botón "Sígueme" */
+#btnSeguir {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Ajustes para la presentación de la sección de Red Social */
+.user-details h2,
+.user-details h3,
+.user-details p {
+    margin: 5px 0;
+}
+
+.user-details #locationInfo strong,
+.user-details p strong {
+    margin-right: 5px;
+}

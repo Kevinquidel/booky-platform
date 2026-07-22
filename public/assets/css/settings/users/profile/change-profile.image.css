@@ -1,0 +1,139 @@
+#contenedorPerfil {
+    width: 42px; /* Aumentamos el tamaño para darle más presencia */
+    height: 42px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* Sombra más suave y estética */
+    transition: all 0.3s ease; /* Transiciones suaves para todas las propiedades */
+    border: 2px solid #3498db; /* Borde azul sólido para destacar el contenedor */
+    background: #fff; /* Fondo blanco para coherencia con los efectos de hover */
+}
+
+#contenedorPerfil:hover {
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4); /* Sombra más intensa al pasar el mouse */
+    transform: scale(1.1); /* Escalado sutil y elegante al pasar el mouse */
+}
+
+#imagenPerfil {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: opacity 0.3s ease; /* Transición suave para la opacidad */
+}
+
+#contenedorPerfil:hover #imagenPerfil {
+    opacity: 0.85; /* Opacidad ajustada para mayor transparencia al pasar el mouse */
+}
+
+#primeraLetraContainer {
+    width: 100%;
+    height: 100%;
+    font-size: 26px; /* Puede necesitar ajustes basados en el contenido */
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    line-height: 42px; /* Igual al height del contenedor para centrar verticalmente */
+    color: #ffffff; /* Color de texto en blanco para contraste */
+    background-color: #3498db; /* Color de fondo azul */
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones suaves para color de fondo y texto */
+}
+
+#contenedorPerfil:hover #primeraLetraContainer {
+    background-color: #fff; /* Fondo más claro al pasar el mouse */
+    color: #333; /* Cambio a un color más oscuro para mejorar la visibilidad */
+}
+
+#botonSubirFoto {
+    display: none; /* Oculta el botón de carga de archivo nativo */
+}
+
+.custom-file-upload {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.icono-camera {
+    width: 30px; /* Ajusta el ancho según sea necesario */
+    height: 30px; /* Ajusta la altura según sea necesario */
+}
+
+/* Estilo para el botón personalizado de eliminar foto */
+.custom-delete {
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* Estilo para el icono de la papelera */
+.icono-papelera {
+    width: 30px; /* Ajusta el ancho según sea necesario */
+    height: 30px; /* Ajusta la altura según sea necesario */
+}
+
+/* CORREGIDO: Coincide exactamente con el ID usado en el HTML y en el Script */
+#eliminarFotoPerfilBtn {
+    display: none; /* Por defecto oculto; el script lo mostrará si existe foto */
+}
+
+/* Estilo del modal de confirmación */
+#confirmacionModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilo del contenido del modal */
+#confirmacionModal .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px; /* Borde redondeado del modal */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Sutil sombra del modal */
+}
+
+/* Estilo del texto en el modal */
+#confirmacionModal .modal-body {
+    margin-bottom: 10px;
+}
+
+/* Estilo de los botones en el modal */
+#confirmacionModal #confirmarEliminacionBtn,
+#confirmacionModal .btn-secondary {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#confirmacionModal #confirmarEliminacionBtn {
+    background-color: #d9534f; /* Color rojo para el botón de confirmar */
+    color: #fff;
+}
+
+#confirmacionModal .btn-secondary {
+    background-color: #5bc0de; /* Color azul para el botón de cancelar */
+    color: #fff;
+}
+
+#confirmacionModal #confirmarEliminacionBtn:hover,
+#confirmacionModal .btn-secondary:hover {
+    opacity: 0.8; /* Reducir la opacidad al pasar el mouse (hover) */
+}

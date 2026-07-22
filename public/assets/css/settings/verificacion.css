@@ -1,0 +1,60 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para verificacion.html */
+body.verificacion {
+  background-color: #f5f5f5;
+}
+
+h1.verificacion {
+  color: #333;
+}
+
+/* Estilos para verificacion_exitosa.html */
+body.verificacion_exitosa {
+  background-color: #e0f2f1;
+}
+
+h1.verificacion_exitosa {
+  color: #009688;
+}
+
+/* Estilos para verificacion_error.html */
+body.verificacion_error {
+  background-color: #ffebee;
+}
+
+h1.verificacion_error {
+  color: #f44336;
+}

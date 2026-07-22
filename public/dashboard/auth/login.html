@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <!-- Metadatos -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Iniciar Sesión - Xalysna Inspira el Futuro, Desbloquea tu Potencial</title>
+  <meta name="description" content="¡De vuelta a la acción! Inicia sesión y sumérgete en la diversión digital.">
+  <meta name="author" content="Xalysna">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="x-content-type-options" content="nosniff">
+
+  <!-- BaseUrl -->
+  <script>
+    const baseUrl = '/'; // Coloca aquí tu URL base
+    const imgBaseUrl = `${baseUrl}assets/img`;
+    const cssBaseUrl = `${baseUrl}assets/css`;
+    const jsBaseUrl = `${baseUrl}assets/dist`;
+  </script>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="/assets/css/settings/login.css">
+  <link rel="stylesheet" href="/assets/css/general/footer.css">
+  <link rel="stylesheet" href="/assets/css/general/funciones/notification.css">
+  <link rel="stylesheet" href="/assets/css/general/panel.css">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="/assets/img/web/favicon.ico">
+</head>
+
+<body>
+  
+  <!-- Formulario de inicio de sesión -->
+  <form id="loginForm">
+    <div id="errorMessage"></div>
+    <div class="login-container">
+      <div class="login-form">
+        <!-- Columna Izquierda -->
+        <div class="left-column">
+          <h2 class="login-title">Iniciar sesión</h2>
+          <!-- Campo de correo electrónico -->
+          <label for="emailLogin">Correo electrónico:</label>
+          <input type="email" id="emailLogin" name="email" placeholder="Correo electrónico" required>
+          <div id="errorEmail" class="error-message"></div>
+          <!-- Campo de contraseña -->
+          <label for="passwordLogin">Contraseña:</label>
+          <input type="password" id="passwordLogin" name="password" placeholder="Contraseña" required autocomplete="current-password">
+          <div id="errorPassword" class="error-message"></div>
+          <!-- Botón de inicio de sesión -->
+          <button type="button" id="loginButton" class="login-button" data-callback="submitLoginForm">Iniciar sesión</button>
+        </div>
+
+        <!-- Columna Derecha -->
+        <div class="right-column">
+          <!-- Mensaje "O inicia sesión con" -->
+          <p class="or-divider">O inicia sesión con:</p>
+          <div class="social-buttons">
+            <!-- Botón de inicio de sesión con Google -->
+            <button type="button" id="googleLoginButton" class="social-login-button">
+              <img src="/assets/img/business/icons8-google-48.png" alt="Google" class="social-login-logo">
+              Google
+            </button>
+          </div>
+          <!-- Enlace "¿Olvidó su contraseña?" -->
+          <a href="/dashboard/auth/action/send-email-reset-password.html" class="forgot-password-link">¿Olvidó su contraseña?</a>
+          <!-- Enlace "¿No tienes una cuenta?" -->
+          <p>¿No tienes una cuenta? <a href="/dashboard/auth/signup.html" class="signup-link">Crear una cuenta</a></p>
+        </div>
+      </div>
+
+      <!-- Pie de página del formulario -->
+      <div class="login-footer">
+        <!-- Mensaje "¿No tienes una cuenta?" movido a la columna derecha -->
+      </div>
+    </div>
+  </form>
+
+  <!-- Pie de página -->
+  <footer>
+    <nav class="footer-navigation" id="footer-navigation">
+      <ul id="footer-menu"></ul>
+    <!--  <a href="#" id="wallet-address" class="wallet-address" data-copy="0x96dFa67FDff3B167C0923b2fA3697E2a2b298869">
+        ❤️💰 Dona Ethereum 💰🚀
+      </a> -->
+    </nav>
+    <div id="toggle-button" class="icon-button">
+      <img src="/assets/img/nav/sidebar-top.svg" alt="Icono de menú">
+    </div>
+  </footer>
+
+
+  <!-- Scripts -->
+  <script src="/assets/dist/settings/config/firebase-config.js" type="module" defer></script>
+  <script src="/assets/dist/settings/config/firebase-config-urls.js" type="module" defer></script>
+  <script src="/assets/dist/settings/auth/session-control.js" type="module" defer></script>
+  <script src="/assets/dist/settings/auth/login-validation.js" type="module" defer></script>
+  <script src="/assets/dist/settings/auth/login.js" type="module" defer></script>
+  <script src="/assets/dist/general/current-year.js" type="module" async></script>
+  <script src="/assets/dist/general/footer.js" type="module" async></script>
+  <script src="/assets/dist/general/funciones/notificaciones.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,227 @@
+/* ==========================================================================
+   CONTENEDOR PRINCIPAL (FONDO OSCURO / OVERLAY)
+   ========================================================================== */
+.profile-modal {
+    display: none; /* Controlado dinámicamente por JS (cambia a block) */
+    position: fixed !important;
+    z-index: 99999 !important; /* Prioridad máxima sobre cualquier elemento */
+    left: 0 !important;
+    top: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    background-color: rgba(0, 0, 0, 0.5) !important; 
+    backdrop-filter: blur(4px) !important;
+}
+
+/* ==========================================================================
+   TARJETA DEL MODAL (COMPACTA Y CENTRADA ABSOLUTA)
+   ========================================================================== */
+.profile-modal-content {
+    background-color: #ffffff !important;
+    padding: 24px !important;
+    border-radius: 12px !important;
+    width: 90% !important;
+    max-width: 400px !important; /* Tamaño esbelto y controlado */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4) !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    
+    /* Centrado físico matemático absoluto */
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    margin: 0 !important;
+}
+
+/* ==========================================================================
+   TÍTULO DE LA SECCIÓN
+   ========================================================================== */
+.profile-section-title {
+    font-size: 1.35rem !important;
+    color: #333333 !important;
+    margin-top: 0 !important;
+    margin-bottom: 20px !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid #f0f0f0 !important;
+    padding-bottom: 8px !important;
+    text-align: left !important;
+}
+
+/* ==========================================================================
+   SECCIÓN DE FOTO DE PERFIL DENTRO DEL MODAL
+   ========================================================================== */
+#profile-picture-section {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 20px !important;
+    width: 100% !important;
+}
+
+#profile-picture-section .foto-contenedor {
+    position: relative !important;
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    margin-bottom: 12px !important;
+    background-color: #3182ce !important;
+    
+    /* 🔥 CORRECCIÓN: Forzamos comportamiento flex para centrar contenido interno */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+
+#primeraLetraContainer {
+    width: 100% !important;
+    height: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: #ffffff !important;
+    font-size: 32px !important;
+    font-weight: bold !important;
+}
+
+#imagenPerfil {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    /* 🔥 CORRECCIÓN: Asegura que la imagen respete los límites redondos y se centre */
+    display: block !important;
+    border-radius: 50% !important;
+}
+
+#profile-picture-section .foto-acciones {
+    display: flex !important;
+    gap: 10px !important;
+    justify-content: center !important;
+    width: 100% !important;
+}
+
+#profile-picture-section .btn-accion-foto {
+    padding: 6px 12px !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    border: 1px solid #cbd5e1 !important;
+    background-color: #ffffff !important;
+    color: #4a5568 !important;
+    text-decoration: none !important;
+    display: inline-block !important;
+    transition: all 0.2s ease !important;
+}
+
+#profile-picture-section .btn-accion-foto:hover {
+    background-color: #f7fafc !important;
+    border-color: #a0aec0 !important;
+}
+
+#profile-picture-section .btn-eliminar-foto {
+    background-color: #fff5f5 !important;
+    color: #e53e3e !important;
+    border-color: #fed7d7 !important;
+}
+
+#profile-picture-section .btn-eliminar-foto:hover {
+    background-color: #fed7d7 !important;
+}
+
+/* ==========================================================================
+   ESTRUCTURA DEL FORMULARIO Y CAMPOS
+   ========================================================================== */
+#profile-basic-data {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+#profile-basic-data p {
+    margin-bottom: 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+}
+
+#profile-basic-data label {
+    margin-bottom: 6px !important;
+    color: #4a5568 !important;
+    font-size: 0.9rem !important;
+    text-align: left !important;
+}
+
+#profile-basic-data input {
+    width: 100% !important;
+    padding: 8px 12px !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 6px !important;
+    font-size: 0.9rem !important;
+    box-sizing: border-box !important;
+    background-color: #ffffff !important;
+    color: #333333 !important;
+}
+
+/* Estados de interacción del input */
+#profile-basic-data input:focus {
+    outline: none !important;
+    border-color: #3182ce !important;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.2) !important;
+}
+
+/* Bloqueo visual para inputs deshabilitados (como el correo) */
+#profile-basic-data input:disabled,
+#profile-basic-data input[readonly] {
+    background-color: #f7fafc !important;
+    color: #a0aec0 !important;
+    border-color: #e2e8f0 !important;
+    cursor: not-allowed !important;
+}
+
+/* ==========================================================================
+   BOTONES DE ACCIÓN (POSICIONADOS ABAJO)
+   ========================================================================== */
+.profile-modal-actions {
+    display: flex !important;
+    justify-content: flex-end !important;
+    gap: 10px !important;
+    margin-top: 10px !important;
+    width: 100% !important;
+}
+
+#saveProfileButton,
+#cancelModalButton {
+    padding: 8px 16px !important;
+    font-size: 0.9rem !important;
+    font-weight: 500 !important;
+    border: none !important;
+    border-radius: 6px !important;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease;
+}
+
+/* Botón Guardar Cambios (Principal) */
+#saveProfileButton {
+    background-color: #2ecc71 !important;
+    color: #ffffff !important;
+    order: 2; /* Lo fuerza a la derecha */
+}
+
+#saveProfileButton:hover {
+    background-color: #27ae60 !important;
+}
+
+/* Botón Cerrar (Secundario) */
+#cancelModalButton {
+    background-color: #e2e8f0 !important;
+    color: #4a5568 !important;
+    order: 1; /* Lo fuerza a la izquierda */
+}
+
+#cancelModalButton:hover {
+    background-color: #cbd5e1 !important;
+}

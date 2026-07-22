@@ -1,0 +1,19 @@
+<section class="appointments-hero">
+    <!-- Tarjeta de Cabecera -->
+    <div class="appointments-header-card">
+        <h2>Mis Citas Programadas</h2>
+        <p>Consulta el historial y el estado actual de tus citas agendadas de forma rápida.</p>
+    </div>
+
+    <!-- Contenedor Dinámico de Listado de Citas -->
+    <div id="appointments-container" class="appointments-grid" style="display: flex; flex-direction: column; gap: 16px; margin-top: 20px;">
+        <div class="appointment-item-card" style="background: white; padding: 20px; border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,0.1);">
+            <p style="color: #64748b; text-align: center;">Cargando tus citas...</p>
+        </div>
+    </div>
+</section>
+
+<!-- Script para gestionar la carga y cancelación de la cita del propio usuario logueado -->
+<script type="module" src="../assets/dist/settings/client/client-appointments.js"></script>
+
+<script type="module" src="../assets/dist/general/content.js"></script>

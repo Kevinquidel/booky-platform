@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Check</title>
+
+    <!-- BaseUrl -->
+    <script>
+        const baseUrl = '/'; // Coloca aquí tu URL base
+        const imgBaseUrl = `${baseUrl}assets/img`;
+        const cssBaseUrl = `${baseUrl}assets/css`;
+        const jsBaseUrl = `${baseUrl}assets/dist`;
+    </script>
+
+    <link rel="stylesheet" href="/assets/dist/settings/config/firebase-interface-config.css">
+    <link rel="stylesheet" href="/assets/css/general/funciones/notification.css">
+    <link rel="stylesheet" href="/assets/css/general/funciones/notice.css">
+    <link rel="stylesheet" href="/assets/other/bootstrap/bootstrap.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto&display=swap">
+
+    <!-- Agrega un aviso persistente en tu interfaz de usuario 
+    <div id="developerModeNotice" class="notice">
+        <strong>¡Modo Desarrollador Obligatorio!</strong> Para acceder a todas las funciones de esta página, por favor, activa el <a href="#" id="activateDeveloperMode">Modo Desarrollador</a> siguiendo las <span id="copyInstructions" class="copy-instructions"></span>.
+        <button id="closeNotice" class="close-button">Cerrar</button>
+    </div> -->
+
+    <!-- Notificación para instalar la extensión 
+    <div id="extensionInstallNotice" class="notice">
+        <strong>¡Instalación de Extensión Obligatoria!</strong> Para acceder a todas las funciones de esta página, por favor, instala la extensión llamada <strong>CORS-Freedom-Plus</strong>. Puedes descargarla desde el <a href="/assets/ext/CORS-Freedom-Plus.zip" id="installLinkInNotice">enlace de descarga</a> y seguir las <span id="InstallcopyInstructions" class="copy-instructions">instrucciones de instalación</span>.
+        <button id="closeInstallNotice" class="close-button">Cerrar</button>
+    </div> -->
+
+    <script src="/assets/dist/general/funciones/notice-dev-activa.js"></script>
+    <script src="/assets/dist/general/funciones/notice-install-cors.js"></script>
+
+</head>
+
+<body class="container mt-4">
+
+    <h1>Verificación de Firebase JS</h1>
+
+    <ul class="nav nav-tabs" id="tabs">
+        <li class="nav-item">
+            <a class="nav-link active" id="firebaseDataCDNgenTabLink" data-bs-toggle="tab" href="#firebaseDataCDNgenTab">Estado de CDN</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="configTabLink" data-bs-toggle="tab" href="#configTab">Verificación de Config</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="urlsTabLink" data-bs-toggle="tab" href="#urlsTab">Verificación de URLs</a>
+        </li>
+    </ul>
+
+<div class="tab-content mt-2">
+        <div class="tab-pane fade show active" id="firebaseDataCDNgenTab">
+            <h2>Estado de Carga Local</h2>
+            <div id="contentContainer">
+                <p>Verifica si los archivos JS del SDK de Firebase locales se han cargado correctamente en el navegador.</p>
+            </div>
+            <div id="resultado"></div>
+        </div>
+
+        <div class="tab-pane fade" id="configTab">
+            <h2>Estado de la Configuración</h2>
+            <div id="configStatus"></div>
+        </div>
+
+        <div class="tab-pane fade" id="urlsTab">
+            <h2>Estado de URLs de Firebase</h2>
+            <div id="urlsStatus"></div>
+        </div>
+    </div>
+</body>
+
+    <!-- Rutas actualizadas para los scripts y recursos estáticos -->
+    <script type="module" src="/assets/dist/settings/config/firebase-config.js"></script>
+    <script type="module" src="/assets/dist/settings/config/firebase-config-urls.js"></script>
+    <script type="module" src="/assets/dist/settings/config/firebase-check.js" defer></script>
+    <script type="module" src="/assets/dist/settings/config/firebase-data-copy.js"></script>
+    <script src="/assets/dist/general/funciones/notificaciones.js"></script>
+    <script type="module" src="/assets/other/bootstrap/bootstrap.js"></script>
+    <script type="module" src="/assets/other/highlight/highlight.js"></script>
+
+</body>
+
+</html>

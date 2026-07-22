@@ -1,0 +1,128 @@
+.sidebar {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: -250px; /* Inicia cerrado */
+    background-color: #1c56a1;
+    overflow-x: hidden;
+    transition: 0.5s;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-content {
+    padding: 20px;
+    color: white;
+  }
+
+  .toggle-btn {
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+    z-index: 2; /* Asegura que el botón esté sobre el sidebar */
+  }
+
+  .toggle-btn img {
+    width: 24px;
+    height: 24px;
+    filter: invert(1);
+  }
+
+
+  .outside-btn img {
+    width: 26px;
+    height: 26px;
+    filter: invert(0);
+    cursor: pointer;
+    position: fixed;
+    top: 50%;
+    left: 20px;
+    z-index: 1;
+  }
+  
+  /* Opcional: Elimina el subrayado que aparece al hacer clic en la imagen */
+  .outside-btn img:focus {
+    outline: none;
+  }
+  
+  /* Opcional: Agrega un estilo visual al hacer clic en la imagen */
+  .outside-btn img:active {
+    transform: scale(0.9);
+  }
+  
+  
+  /* Elimina el estilo del botón predeterminado */
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  
+  .main-content {
+    margin-left: 0; /* Ajusta según tus necesidades */
+    padding: 20px;
+    transition: 0.5s;
+  }
+
+  .sidebar-closed {
+    left: 0;
+  }
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 1115px) {
+    .toggle-btn {
+        font-size: 20px;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 10px;
+        position: relative;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+        z-index: 2;
+      top: 80%;
+    }
+}
+
+
+@media (max-width: 468px) {
+    .sidebar {
+      width: 100%; /* Ocupa el 100% del ancho en dispositivos móviles */
+      left: -100%; /* Inicia cerrado */
+    }
+  
+    .toggle-btn {
+        font-size: 20px;
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        padding: 10px;
+        position: relative;
+        opacity: 1;
+        transition: opacity 0.5s ease;
+        z-index: 2;
+      top: 80%;
+    }
+  
+    .outside-btn img {
+      bottom: 10px; /* Cambiado a bottom para colocar la imagen abajo */
+      left: 10px;
+    }
+  
+    .main-content {
+      margin-left: 0; /* Restablece el margen lateral */
+    }
+  
+    .sidebar-closed {
+      left: 0;
+    }
+  }

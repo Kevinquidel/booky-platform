@@ -1,0 +1,73 @@
+/* Estilos generales */
+body {
+  overflow-y: hidden; /* Ocultar barra de desplazamiento vertical */
+  margin: 0; /* Agregado para evitar el margen predeterminado del body */
+}
+
+/* Estilos para el contenedor del registro */
+#styleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif; /* Cambié la fuente a 'Roboto' */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: linear-gradient(135deg, #00bcd4, #004080, #8e44ad);
+  animation: changeGradient 15s linear infinite;
+}
+
+@keyframes changeGradient {
+  0%, 100% {
+    background: linear-gradient(135deg, #00bcd4, #004080, #8e44ad);
+  }
+  25%, 50% {
+    background: linear-gradient(135deg, #3498db, #2c3e50, #e74c3c);
+  }
+  75% {
+    background: linear-gradient(135deg, #3498db, #a9cce3, #f5b7b1);
+  }
+}
+
+/* Estilo para el formulario dentro del contenedor */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  max-width: auto; /* Añadido para limitar el ancho del formulario */
+  margin: auto; /* Añadido para centrar el formulario horizontalmente */
+  padding: 20px; /* Añadido para dar espacio al contenido dentro del formulario */
+  background-color: #fff; /* Añadido un fondo blanco al formulario */
+  border-radius: 8px; /* Añadido para suavizar las esquinas del formulario */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añadido para dar sombra al formulario */
+}
+
+/* Estilo para los elementos del formulario (por ejemplo, inputs, botones, etc.) */
+.register-form input,
+.register-form button {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+/* Estilo adicional para los botones */
+.register-form button {
+  background-color: #5abd94; /* Color de fondo inicial (verde) */
+  color: #000000;
+  cursor: pointer;
+  border: none; /* Añadido para quitar el borde del botón */
+}
+
+/* Estilo para el estado hover del botón */
+.register-form button:hover {
+  background-color: #8257a6; /* Color de fondo al pasar el mouse (hover) */
+  color: #fff;
+  text-decoration: none;
+}
+
+
+/* Estilo para el texto dentro del formulario */
+.register-form label {
+  margin-bottom: 5px;
+}

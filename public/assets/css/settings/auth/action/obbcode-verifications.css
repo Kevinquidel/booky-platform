@@ -1,0 +1,81 @@
+/* Estilos generales */
+body {
+  overflow-y: hidden; /* Ocultar barra de desplazamiento vertical */
+  margin: 0; /* Agregado para evitar el margen predeterminado del body */
+}
+
+/* Estilos para el contenedor del registro */
+.register-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  background: linear-gradient(135deg, #00bcd4, #004080, #8e44ad);
+  animation: changeGradient 15s linear infinite;
+}
+
+@keyframes changeGradient {
+
+  0%,
+  100% {
+    background: linear-gradient(135deg, #00bcd4, #004080, #8e44ad);
+  }
+
+  25%,
+  50% {
+    background: linear-gradient(135deg, #3498db, #2c3e50, #e74c3c);
+  }
+
+  75% {
+    background: linear-gradient(135deg, #3498db, #a9cce3, #f5b7b1);
+
+  }
+}
+
+
+.verification-container {
+  max-width: 400px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el párrafo */
+.verification-container p {
+  margin-bottom: 10px; /* Agrega un margen inferior al párrafo */
+}
+
+
+.verification-title {
+  color: #333;
+}
+
+
+/* Estilo adicional para los botones */
+.submit-button {
+  display: inline-block; /* Asegura que el botón se ajuste correctamente */
+  background-color: #5abd94;
+  /* Color de fondo inicial (verde) */
+  color: #000000;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 10px;
+  padding: 10px 20px; /* Ajusta el espaciado del botón */
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+/* Estilo para el estado hover del botón */
+.submit-button:hover {
+  background-color: #8257a6;
+  /* Color de fondo al pasar el mouse (hover) */
+  color: #fff;
+}

@@ -1,0 +1,75 @@
+#loadingScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8); /* Fondo blanco con transparencia */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Asegurarse de que está sobre otros elementos */
+    flex-direction: column;
+}
+
+.loading-logo {
+    width: 100px; /* Ajusta según el tamaño deseado para el logo */
+    margin-bottom: 20px;
+}
+
+.progress-bar-container {
+    width: 90%; /* Ancho aumentado para mayor visibilidad */
+    height: 30px; /* Altura incrementada para un look más robusto */
+    background-color: #e0e0e0; /* Color de fondo neutral más suave */
+    border-radius: 20px; /* Bordes aún más redondeados */
+    overflow: hidden; /* Asegura que la barra de progreso no sobrepase el contenedor */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15); /* Sombra más amplia y suave */
+    margin: 25px auto; /* Margen superior e inferior y auto para centrar */
+    border: 1px solid #ccc; /* Borde sutil para definir mejor el contenedor */
+}
+
+.progress-bar {
+    height: 100%; /* Usa la altura completa del contenedor */
+    width: 0%; /* Comienza sin llenar */
+    background-color: #3498db; /* Cambio a un azul vibrante */
+    background-image: linear-gradient(to right, #3498db 0%, #5dade2 50%, #3498db 100%); /* Gradiente de azules claros y oscuros */
+    border-radius: 18px; /* Menos redondeado que el contenedor para una mejor estética */
+    transition: width 0.5s ease; /* Transición más rápida para un efecto dinámico */
+    box-shadow: inset 0 2px 9px rgba(52, 152, 219, 0.9); /* Sombra interna más marcada para profundidad */
+    animation: shimmer 2s ease-in-out infinite; /* Efecto de brillo ajustado para mejor ritmo */
+}
+
+@keyframes shimmer {
+    0% { background-position: 100% 0; }
+    50% { background-position: 0% 100%; }
+    100% { background-position: 100% 0; }
+}
+
+
+
+
+/* Estilos para la imagen del logo en general */
+.logo-img {
+    width: 87px; /* Ajusta el ancho según tus necesidades */
+    height: auto; /* Para mantener la proporción original de la imagen */
+    transition: transform 0.3s ease-in-out; /* Efecto suave de transición al pasar el ratón */
+    margin-bottom: 10px; /* Ajusta la distancia inferior según tus necesidades */
+    margin-top: 25px; /* Ajusta la distancia superior según tus necesidades */
+
+}
+
+/* Estilos al pasar el ratón sobre la imagen del logo */
+.logo-img:hover {
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño al pasar el ratón */
+}
+
+/* Estilos específicos para dispositivos móviles con ancho máximo de 768px */
+@media screen and (max-width: 768px) {
+    .logo-img {
+        width: 100%; /* Haz que la imagen ocupe el ancho completo del contenedor en dispositivos móviles */
+        height: auto; /* Mantén la proporción original de la imagen */
+        margin-top: 35px; /* Ajusta la distancia superior según tus necesidades */
+        margin-bottom: 10px; /* Ajusta la distancia inferior según tus necesidades */
+        transform: none; /* Reinicia cualquier transformación aplicada en el hover */
+    }
+}

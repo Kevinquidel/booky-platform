@@ -1,0 +1,52 @@
+<!-- Componente del menú de usuario (sin el contenedor principal) -->
+
+<div class="booky-action-wrapper">
+    <input type="checkbox" id="bookyToggleNav">
+
+    <label for="bookyToggleNav" class="booky-trigger">
+        <div id="contenedorPerfil" class="booky-avatar-box">
+            <img id="imagenPerfil" src="" alt="Foto de perfil">
+            <div id="primeraLetraContainer"></div>
+        </div>
+    </label>
+
+    <div id="NuevoDropdownMenu" class="booky-box">
+        <div class="booky-header">
+            <span id="menuRole">Cargando usuario...</span>
+            <div id="menuUserEmail">usuario@correo.com</div>
+        </div>
+
+        <ul class="booky-list">
+            <li class="booky-item">
+                <span class="material-icons booky-icon">person</span>
+                <a href="#" class="booky-link" onclick="event.preventDefault(); mostrarModal();">
+                    Editar perfil
+                </a>
+            </li>
+
+            <li class="booky-item">
+                <span class="material-icons booky-icon">settings</span>
+                <a href="#" class="booky-link">Configuraciones</a>
+            </li>
+
+            <li class="booky-item">
+                <span class="material-icons booky-icon">help_outline</span>
+                <a href="#" class="booky-link">Ayuda</a>
+            </li>
+
+            <li class="booky-item">
+                <span class="material-icons booky-icon">person_add_alt</span>
+                <a href="#" class="booky-link">Agregar cuenta</a>
+            </li>
+
+            <hr class="booky-line">
+
+            <li class="booky-item">
+                <span class="material-icons booky-icon" style="color:#e53e3e !important;">logout</span>
+                <a href="#" id="menuLogoutBtn" class="booky-link" style="color:#e53e3e !important;font-weight:600 !important;">
+                    Cerrar sesión
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

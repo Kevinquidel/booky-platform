@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Solo permitir a los usuarios autenticados leer y escribir en sus propios documentos de usuario
+    match /USERS/{userId} {
+      allow read, write: if request.auth.uid == userId;
+      // Permitir leer si el campo estadoCuenta es true
+      allow update: if resource.data.estadoCuenta == true && request.resource.data.estadoCuenta == resource.data.estadoCuenta;
+    }
+
+    // Denegar la escritura en cualquier otro lugar
+    match /{document=**} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+  }
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booky - Configuraciones</title>
+</head>
+<body>
+
+    <!-- =========================
+         BARRA DE NAVEGACIÓN SUPERIOR
+    ========================= -->
+    <header class="navbar">
+        <div class="navbar-brand">
+            <h1>Booky</h1>
+        </div>
+        <div class="navbar-user">
+            <span id="userGreeting" class="is-hidden">Hola, <span id="usernameDisplay">Usuario</span></span>
+            <div id="contenedorPerfil" class="profile-avatar-container">
+                <div id="primeraLetraContainer">U</div>
+                <img id="imagenPerfil" src="" alt="Foto de perfil" style="display: none;">
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================
+         CONTENIDO DE CONFIGURACIONES
+    ========================= -->
+    <main class="profile-modal-content">
+        <h2>Configuración del Sistema</h2>
+
+        <!-- SECCIÓN 1: PREFERENCIAS GENERALES -->
+        <section class="settings-section">
+            <h3>Preferencias de Notificaciones</h3>
+            <p>
+                <label>
+                    <input type="checkbox" id="emailNotifications" checked>
+                    Recibir recordatorios de citas por correo electrónico
+                </label>
+            </p>
+        </section>
+
+        <!-- SECCIÓN 2: SEGURIDAD Y ACCESO -->
+        <section class="settings-section">
+            <h3>Seguridad de la Cuenta</h3>
+            <p>
+                <button type="button" id="resetPasswordBtn">
+                    Enviar correo de cambio de contraseña
+                </button>
+            </p>
+        </section>
+
+        <!-- BOTONES DE ACCIÓN GENERALES -->
+        <div class="profile-modal-actions">
+            <button type="button" id="saveSettingsButton">
+                Guardar configuraciones
+            </button>
+            <button type="button" id="backButton" onclick="window.location.href='../index.html'">
+                Regresar al Home
+            </button>
+        </div>
+    </main>
+
+</body>
+</html>

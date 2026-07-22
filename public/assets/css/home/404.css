@@ -1,0 +1,27 @@
+.verification-container {
+    text-align: center; /* Alinea el contenido al centro */
+}
+
+.verification-title {
+    margin-bottom: 15px;
+}
+
+.index-link-button {
+    display: inline-block; /* Hace que el botón sea un bloque inline */
+    margin-top: 20px; /* Ajusta el margen superior para separar el botón del texto */
+    padding: 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #5abd94; /* Color de fondo inicial (verde) */
+    color: #000; /* Color del texto (negro) */
+}
+
+.index-link-button:hover {
+    background-color: #8257a6; /* Color de fondo al pasar el mouse (hover) */
+    color: #fff;
+    text-decoration: none;
+}

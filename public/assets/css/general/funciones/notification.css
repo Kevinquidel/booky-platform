@@ -1,0 +1,28 @@
+/* Estilo para las notificaciones y mensaje "Copiado" */
+.notification,
+.copied-message {
+  position: fixed;
+  bottom: 50px;
+  right: 60px;
+  background-color: #000;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  z-index: 9999; /* Aumentamos el valor del z-index para asegurar la visibilidad */
+  width: auto;
+  max-width: 300px;
+  white-space: pre-line;
+}
+
+/* Asegurémonos de que el body tenga una posición relativa */
+body {
+  position: relative;
+}
+
+/* Añade un estilo adicional para los formularios de login y registro */
+#loginForm,
+#registerForm {
+  position: relative;
+  z-index: 1; /* Asegúrate de que el valor de z-index sea inferior al de las notificaciones */
+}

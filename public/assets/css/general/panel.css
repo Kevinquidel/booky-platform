@@ -1,0 +1,242 @@
+/* ==========================================================================
+   BOOKY - PANEL.CSS
+   Controla únicamente la navegación y el panel de subcategorías.
+   ========================================================================== */
+
+/* ===========================
+   RESET
+=========================== */
+
+html {
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===========================
+   NAVEGACIÓN PRINCIPAL
+=========================== */
+
+#navigation {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    height: 100%;
+}
+
+#navigation a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    text-decoration: none;
+    color: #ecf0f1;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: .25s;
+    white-space: nowrap;
+}
+
+#navigation a:hover {
+    color: #ffffff;
+}
+
+#navigation a img {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+}
+
+/* ===========================
+   DROPDOWN DE NAVEGACIÓN
+=========================== */
+
+#navigation .dropdown {
+    position: relative;
+}
+
+#navigation .dropdown .panel {
+    position: absolute;
+
+    top: calc(100% + 10px);
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    display: none;
+
+    min-width: 220px;
+
+    background: #ffffff;
+    border-radius: 10px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.12);
+
+    padding: 12px;
+
+    z-index: 9999;
+}
+
+#navigation .dropdown:hover .panel {
+    display: block;
+}
+
+/* ===========================
+   SUBCATEGORÍAS
+=========================== */
+
+#subcategory-panel {
+
+    display: none;
+
+    position: absolute;
+
+    top: calc(100% + 8px);
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    width: 240px;
+
+    background: #ffffff;
+
+    border-radius: 10px;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.12);
+
+    padding: 10px;
+
+    z-index: 99999;
+}
+
+#subcategory-panel a {
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px;
+
+    color: #444;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition: .2s;
+}
+
+#subcategory-panel a:hover {
+
+    background: #f4f6f9;
+
+    color: #000;
+}
+
+/* ===========================
+   BOTONES GENERALES
+=========================== */
+
+button:not(#login-button):not(#signup-button) {
+
+    padding: 8px 15px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    cursor: pointer;
+
+    transition: .25s;
+}
+
+button:not(#login-button):not(#signup-button):focus {
+
+    outline: none;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width:782px){
+
+    html{
+
+        font-size:13px;
+
+    }
+
+    #navigation{
+
+        gap:8px;
+        overflow-x:auto;
+        scrollbar-width:none;
+
+    }
+
+    #navigation::-webkit-scrollbar{
+
+        display:none;
+
+    }
+
+    #navigation a{
+
+        font-size:13px;
+
+    }
+
+    #navigation a img{
+
+        width:20px;
+        height:20px;
+
+    }
+
+}
+
+@media (max-width:655px){
+
+    #navigation{
+
+        gap:6px;
+
+    }
+
+    #navigation a{
+
+        font-size:0;
+
+    }
+
+    #navigation a img{
+
+        width:20px;
+        height:20px;
+
+    }
+
+}
+
+@media (max-width:370px){
+
+    #navigation a img{
+
+        width:16px;
+        height:16px;
+
+    }
+
+}

@@ -1,0 +1,143 @@
+/* Estilos básicos para el contenedor de contenido */
+#contenido {
+    position: relative;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco para el contenido */
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-radius: 12px; /* Esquinas redondeadas para un look moderno */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Sombra sutil para agregar profundidad */
+    margin: -50px auto;
+    width: 90%; /* Ancho relativo para mejor adaptabilidad */
+    margin-bottom: 100px;
+}
+
+/* Personalización de la barra de desplazamiento para todo el body */
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Estilos para secciones individuales dentro de #contenido */
+#contenido section {
+    background-color: #f9f9f9; /* Un toque sutil de color para diferenciar secciones */
+    border-left: 5px solid #0056b3; /* Borde izquierdo para destacar */
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+/* Estilos claros para títulos dentro de #contenido */
+#contenido h1, #contenido h2, #contenido h3 {
+    color: #0056b3; /* Un color azul vibrante para los títulos */
+    margin-bottom: 10px;
+}
+
+/* Mejora de la legibilidad del texto */
+#contenido p {
+    line-height: 1.65;
+    color: #666; /* Color de texto más suave para fácil lectura */
+}
+
+/* Estilo para listas */
+#contenido ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 5px;
+}
+
+/* Estilos para enlaces */
+#contenido a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+#contenido a:hover {
+    text-decoration: underline;
+    color: #0056b3;
+}
+
+/* Estilos para botones (excluyendo los botones de autenticación de la barra de navegación) */
+#contenido button:not(#login-button):not(#signup-button), 
+#contenido a.button:not(#login-button):not(#signup-button) {
+    background-color: #2831a7;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transición suave al cambiar color */
+}
+
+#contenido button:not(#login-button):not(#signup-button):hover, 
+#contenido a.button:not(#login-button):not(#signup-button):hover {
+    background-color: #50b9b0;
+}
+
+/* Estilo para los inputs, selects, y textareas */
+#contenido input[type="text"],
+#contenido input[type="email"],
+#contenido input[type="password"],
+#contenido select,
+#contenido textarea {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    padding: 8px 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc; /* Borde sutil */
+    border-radius: 4px; /* Bordes redondeados */
+    box-sizing: border-box; /* El padding y border como parte del width total */
+}
+
+#contenido input[type="text"]:focus,
+#contenido input[type="email"]:focus,
+#contenido input[type="password"]:focus,
+#contenido select:focus,
+#contenido textarea:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 86, 179, 0.2); /* Resaltar enfoque */
+}
+
+/* Estilo para códigos (direcciones de criptomonedas, etc.) */
+#contenido code {
+    display: block;
+    background-color: #e9ecef; /* Fondo gris claro */
+    color: #495057; /* Texto gris oscuro */
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    font-family: monospace;
+}
+
+/* Estilo adicional para códigos QR y alineación */
+#contenido .qr {
+    text-align: center; /* Centra los códigos QR y otros elementos */
+    margin-top: 10px;
+}
+
+/* Estilo para las imágenes de los códigos QR */
+#contenido img.qr-image {
+    max-width: 150px; /* Tamaño apropiado para los códigos QR */
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    #contenido {
+        width: 95%; /* Ajuste para dispositivos más pequeños */
+        margin: -30px auto;
+        margin-bottom: 40px;
+    }
+}

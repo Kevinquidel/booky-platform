@@ -1,0 +1,41 @@
+<section class="booking-hero">
+    <!-- Tarjeta de Cabecera -->
+    <div class="booking-header-card">
+        <h2>Gestión de Reservas</h2>
+        <p>Selecciona los detalles de tu cita para agendar un nuevo servicio de forma rápida y sencilla.</p>
+    </div>
+
+    <!-- Cuadrícula o Contenedor Principal del Formulario -->
+    <div class="booking-grid">
+        <div class="booking-item-card">
+            <h3>Nueva Reserva</h3>
+            <p>Completa los campos a continuación para procesar tu cita con nuestros profesionales.</p>
+            
+            <!-- Formulario de reserva con onsubmit de seguridad -->
+            <form id="booking-form" onsubmit="event.preventDefault();" style="margin-top: 20px; display: flex; flex-direction: column; gap: 16px;">
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="service-select" style="font-weight: 600; color: #1e293b; font-size: 0.95rem;">Seleccionar Servicio:</label>
+                    <select id="service-select" style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; background-color: #fff;">
+                        <option value="">Cargando servicios disponibles...</option>
+                    </select>
+                    <!-- Vista previa dinámica de la descripción del servicio si la tiene -->
+                    <div id="service-description-preview" style="display: none; font-size: 0.85rem; color: #64748b; background-color: #f8fafc; padding: 8px 12px; border-radius: 6px; border-left: 3px solid #2563eb; margin-top: 4px;"></div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="booking-date" style="font-weight: 600; color: #1e293b; font-size: 0.95rem;">Fecha y Hora:</label>
+                    <input type="datetime-local" id="booking-date" style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; background-color: #fff;">
+                </div>
+
+                <button type="submit" class="btn" style="background-color: #2563eb; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 10px;">
+                    Confirmar Reserva
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Script para procesar y guardar la reserva en el documento del usuario -->
+<script type="module" src="../assets/dist/settings/client/client-booking.js"></script>
+
+<script type="module" src="../assets/dist/general/content.js"></script>

@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "booky-platform"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
+}

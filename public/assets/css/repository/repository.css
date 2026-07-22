@@ -1,0 +1,200 @@
+  /* Styles for the main container */
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+  }
+
+  /* Styles for the search form */
+  .search-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .input-container input[type="text"] {
+    padding: 10px;
+    border: none;
+    width: 250px;
+  }
+
+  .input-container button {
+    padding: 10px 20px;
+    background-color: #ff6347;
+    color: #ffffff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .input-container button:hover {
+    background-color: #e74c3c;
+  }
+
+  .input-container button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Styles for the file table */
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  .file-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 200px;
+  }
+
+  .file-table th,
+  .file-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+  }
+
+  #fileTableBody {
+    font-size: 14px;
+  }
+
+  #fileTableBody tr:nth-child(even) {
+    background-color: #f5f5f5;
+  }
+
+  #fileTableBody td {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  #fileTableBody td:first-child {
+    font-weight: bold;
+  }
+
+  /* Styles for the repository buttons */
+  .download-button {
+    padding: 8px 16px;
+    background-color: #e74c3c;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .download-button:hover {
+    background-color: #c0392b;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .download-button:active {
+    background-color: #d35400;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Styles for the pagination */
+  .pagination {
+    margin-top: -10%;
+    text-align: center;
+    position: relative;
+  }
+
+  /* Styles for mobile devices */
+  @media only screen and (max-width: 600px) {
+    .container {
+      padding: 10px;
+      max-width: 100%;
+    }
+
+    .search-wrapper {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .input-container {
+      display: flex;
+      align-items: center;
+      border: 1px solid #000000;
+      border-radius: 4px;
+      overflow: hidden;
+      width: 100%;
+      max-width: 300px;
+      margin-bottom: 10px;
+    }
+
+    .input-container input[type="text"] {
+      flex-grow: 1;
+      padding: 10px;
+      border: none;
+      width: 100%;
+    }
+
+    .input-container button {
+      padding: 10px 20px;
+      background-color: #ff6347;
+      color: #ffffff;
+      border: none;
+      border-radius: 0 4px 4px 0;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: auto;
+    }
+
+    .table-wrapper {
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    .file-table th,
+    .file-table td {
+      padding: 10px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 12px;
+    }
+
+    .file-table th:nth-child(2),
+    .file-table td:nth-child(2),
+    .file-table th:nth-child(3),
+    .file-table td:nth-child(3) {
+      display: none;
+    }
+
+    /* Styles for the pagination */
+    .pagination {
+      margin-top: -50%;
+      text-align: center;
+      position: relative;
+    }
+  }
+
+  /* Additional styles */
+  body {
+    background-color: #f5f5f5;
+  }
+
+  .container {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-top: 20px;
+  }

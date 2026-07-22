@@ -1,0 +1,92 @@
+/* Estilo para el botón */
+#toggle-button img {
+  width: 26px;
+  height: 26px;
+  filter: invert(0);
+  cursor: pointer;
+  position: fixed;
+  top: 88%;
+  left: 97%;
+  z-index: 1002;
+}
+
+#toggle-button img:focus {
+  outline: none;
+}
+
+#toggle-button img:active {
+  transform: scale(0.9);
+}
+
+/* Estilo para el footer (Más delgado / menos alto) */
+.footer-navigation {
+  background-color: #111111;
+  padding: 6px 20px; /* Reducido el padding superior/inferior de 12px a 6px para que sea más delgado */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: 1000;
+  box-shadow: 0px -4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo para ocultar elementos secundarios */
+.footer-navigation.hidden {
+  display: none;
+}
+
+/* Estilos para el menú */
+.footer-navigation ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  align-items: center;
+}
+
+.footer-navigation li {
+  margin-right: 0;
+}
+
+.footer-navigation a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #E2E8F0;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.2s ease;
+  line-height: 1.2; /* Asegura que el texto no genere altura extra */
+}
+
+.footer-navigation a:hover {
+  color: #90CDF4;
+}
+
+.footer-navigation img {
+  width: 18px; /* Ligeramente más pequeño para mantener la proporción en la barra delgada */
+  height: 18px;
+  margin-right: 8px;
+  filter: invert(1);
+}
+
+@media only screen and (max-width: 530px) {
+  .footer-navigation li {
+    font-size: 0; 
+  }
+
+  .footer-navigation a {
+    font-size: 0; 
+  }
+
+  .footer-navigation img {
+    margin-right: 0; 
+  }
+}

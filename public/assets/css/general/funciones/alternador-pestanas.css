@@ -1,0 +1,39 @@
+.pestaña {
+    cursor: pointer;
+    padding: 10px;
+    background-color: #3498db; /* Cambié el color de fondo a un azul más vibrante */
+    color: #fff; /* Texto en color blanco para mayor contraste */
+    border-radius: 5px; /* Bordes redondeados */
+    display: flex;
+    align-items: center; /* Centrar verticalmente el contenido */
+  }
+  
+  .flecha {
+    display: inline-block;
+    border: solid #fff; /* Color blanco para la flecha */
+    border-width: 0 2px 2px 0;
+    padding: 5px; /* Aumenté el tamaño de la flecha */
+    transform: rotate(45deg);
+    margin-right: 8px;
+    transition: transform 0.3s; /* Agregué una transición suave a la rotación */
+  }
+  
+  .informacion {
+    display: none;
+    padding: 10px;
+    border: 1px solid #3498db; /* Borde con el mismo color del fondo de la pestaña */
+    border-radius: 5px; /* Bordes redondeados */
+    margin-top: 10px; /* Espaciado superior para separar de la pestaña */
+  }
+  
+  /* Estilo cuando se pasa el ratón sobre la pestaña */
+  .pestaña:hover {
+    background-color: #2980b9; /* Cambio de color al pasar el ratón */
+  }
+  
+  /* Estilo cuando se pasa el ratón sobre la flecha */
+  .pestaña:hover .flecha {
+    border-color: #fff; /* Cambio de color al pasar el ratón */
+  }
+  
+

@@ -1,0 +1,271 @@
+/* Reset de estilos y fuentes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #f8f9fa;
+}
+
+/* Estilo del contenedor principal */
+.search-container {
+    max-width: 900px;
+    height: 65px;
+    margin: 50px auto 70px;
+    background: linear-gradient(45deg, #00ffc8, #3b80ca);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+
+/* Estilo del contenedor de entrada y botón */
+.input-container {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.search-input {
+    flex: 1;
+    padding: 15px;
+    border: 2px solid #00f7ff;
+    border-radius: 10px 0 0 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+    font-size: 16px;
+}
+
+/* Ajustes para el botón de búsqueda */
+.search-button {
+    cursor: pointer;
+    background-color: #87c9da;
+    border: none;
+    border-radius: 0 10px 10px 0;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Ajusta estilos según sea necesario para que la imagen se vea como un botón */
+.search-svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Estilo del texto "CTRL + K" */
+.shortcut-text {
+    position: absolute;
+    right: 80px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #070000;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Estilo del contenedor de sugerencias, opciones y historial de búsqueda */
+.suggestions-container,
+.search-options,
+.search-history {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Estilo del hover para el botón de búsqueda */
+.search-button:hover {
+    background-color: #00b3aa;
+}
+
+/* Estilo para la transición de la entrada de búsqueda */
+.search-input:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+}
+
+/* Estilos para el contenedor de sugerencias */
+.suggestions-container {
+    margin-top: 8px;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para cada sugerencia */
+.suggestion {
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos para cuando una sugerencia está resaltada */
+.suggestion.highlighted {
+    background-color: #63cdda;
+    font-weight: bold;
+    border-radius: 6px;
+
+}
+
+/* Estilos para cuando una sugerencia está seleccionada */
+.suggestion.selected {
+    background-color: #4a69bd;
+    color: #fff;
+    font-weight: bold;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+/* Estilos para cuando el mouse está sobre una sugerencia */
+.suggestion:hover,
+.suggestion.selected:hover {
+    background-color: #6c5ce7;
+    font-weight: bold;
+    border-radius: 6px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Estilo del contenedor de resultados, con un margen superior suave y un diseño más espacioso */
+#results-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Añade espacio entre cada resultado */
+    align-items: center;
+}
+
+/* Estilos para cada resultado, con bordes suavizados, colores cálidos y una sombra más pronunciada para destacar */
+.search-result {
+    padding: 40px;
+    border: 1px solid #eaeaea; /* Un borde más suave */
+    border-radius: 15px; /* Bordes más redondeados */
+    background-color: #ffffff; /* Un blanco puro para mayor claridad */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Una sombra más suave y extendida */
+    transition: all 0.3s ease; /* Suaviza todas las transiciones */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+
+
+
+.search-result:hover {
+    transform: translateY(-10px); /* Un levantamiento más notable */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Aumenta la sombra al pasar el mouse */
+    cursor: pointer;
+}
+
+
+/* Estilos específicos para el título dentro del resultado de búsqueda */
+.search-result h3 {
+    margin-bottom: 15px; /* Añade espacio debajo del título */
+    font-size: 24px; /* Define el tamaño del título */
+    color: #333; /* Establece el color del texto del título */
+}
+
+/* Estilos específicos para el párrafo dentro del resultado de búsqueda */
+.search-result p {
+    color: #555; /* Establece el color del texto del párrafo */
+    line-height: 1.6; /* Mejora la legibilidad ajustando la altura de línea */
+    white-space: nowrap; /* Evita saltos de línea por espacios en blanco */
+}
+
+
+/* Estilos para el enlace dentro del resultado de búsqueda */
+.search-result a {
+    color: #007bff; /* Color del texto del enlace */
+    text-decoration: none; /* Elimina el subrayado del enlace */
+    font-weight: bold; /* Hace que el texto del enlace sea negrita */
+    transition: color 0.2s ease; /* Suaviza la transición de color al pasar el mouse */
+    margin: 0 10px; /* Añade espacio alrededor del enlace */
+    align-self: center; /* Centra el enlace horizontalmente si está dentro de un contenedor Flex */
+}
+
+/* Estilos para el estado hover del enlace */
+.search-result a:hover {
+    text-decoration: underline; /* Añade un subrayado al pasar el mouse */
+    color: #0056b3; /* Cambia el color al pasar el mouse */
+}
+
+/* Estilos para imágenes de perfil con bordes redondeados y sombra sutil */
+.profile-image {
+    width: 60px; /* Ancho de la imagen */
+    height: 60px; /* Altura de la imagen */
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    object-fit: cover; /* Asegura que la imagen cubra el contenedor sin distorsionarse */
+    margin: 10px auto; /* Centra la imagen horizontalmente */
+    border: 2px solid #f0f0f0; /* Añade un borde suave a la imagen */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Añade una sombra sutil */
+}
+
+
+
+
+
+
+
+
+
+/* Estilo del contenedor de paginación, con botones más modernos y espaciados */
+#pagination-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Añade espacio entre botones */
+}
+
+#pagination-container button {
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px; /* Un poco más de relleno para una mejor presencia */
+    cursor: pointer;
+    border-radius: 50px; /* Botones completamente redondos */
+    transition: all 0.2s ease; /* Suaviza todas las transiciones */
+}
+
+#pagination-container button:hover {
+    background-color: #0056b3;
+}
+
+#pagination-container button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+
+
+
+
+
+
+
+
+
+

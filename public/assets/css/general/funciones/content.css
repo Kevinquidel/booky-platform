@@ -1,0 +1,130 @@
+/* ==========================================================================
+   BOOKY - Content & Layout Core Styles (Global para todas las pestañas)
+   ========================================================================== */
+
+/* 1. Global Reset & Box Sizing */
+#app-view-container *,
+#app-view-container *::before,
+#app-view-container *::after {
+    box-sizing: border-box;
+}
+
+/* 2. Main View Container */
+#app-view-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: -50px auto 40px auto;
+    padding: 24px;
+    background-color: #f8fafc;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.03);
+    position: relative;
+    z-index: 1;
+}
+
+/* 3. Hero / Secciones Principales de cualquier vista */
+#app-view-container section,
+#app-view-container .services-hero,
+#app-view-container .booking-hero,
+#app-view-container .appointments-hero,
+#app-view-container .profile-hero {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+}
+
+/* 4. Tarjetas de Cabecera o Bienvenida (Generalizado) */
+#app-view-container .services-header-card,
+#app-view-container .booking-header-card,
+#app-view-container .appointments-header-card,
+#app-view-container .profile-header-card,
+#app-view-container [class*="-welcome-card"],
+#app-view-container [class*="-header-card"] {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 36px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    border-left: 6px solid #2563eb;
+    border-top: 1px solid #f1f5f9;
+    border-right: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+#app-view-container h2 {
+    margin: 0 0 12px 0;
+    color: #1e293b;
+    font-size: 1.85rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+#app-view-container p {
+    margin: 0;
+    color: #475569;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+/* 5. Cuadrículas / Grids (Generalizado) */
+#app-view-container .services-grid,
+#app-view-container .booking-grid,
+#app-view-container .appointments-grid,
+#app-view-container .profile-grid,
+#app-view-container [class*="-grid"] {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    width: 100%;
+}
+
+/* 6. Tarjetas individuales de contenido o estadísticas */
+#app-view-container .service-item-card,
+#app-view-container .booking-item-card,
+#app-view-container .appointment-item-card,
+#app-view-container .profile-item-card,
+#app-view-container .stat-card,
+#app-view-container [class*="-card"] {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 28px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+#app-view-container [class*="-card"]:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+    border-color: #cbd5e1;
+}
+
+#app-view-container h3 {
+    margin: 0 0 10px 0;
+    color: #2563eb;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* 7. Responsive Media Queries */
+@media (max-width: 768px) {
+    #app-view-container {
+        margin: -30px auto 16px auto;
+        padding: 16px;
+        border-radius: 12px;
+    }
+    
+    #app-view-container [class*="-header-card"],
+    #app-view-container [class*="-welcome-card"] {
+        padding: 24px;
+    }
+
+    #app-view-container h2 {
+        font-size: 1.5rem;
+    }
+
+    #app-view-container [class*="-grid"] {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+}

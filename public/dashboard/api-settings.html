@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APIs de Imágenes y Texto IA — Booky</title>
+    <!-- Tailwind CSS para el diseño -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Barra de Navegación del Panel Admin -->
+    <header class="bg-gray-900 text-white shadow-md">
+        <div class="w-full px-6 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold">Booky — Configuración de APIs (Imágenes y Textos IA)</h1>
+            <nav class="flex gap-4">
+                <a href="panel-admn.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Usuarios</a>
+                <a href="appointments-management.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Citas</a>
+                <a href="services-management.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Servicios</a>
+                <a href="api-settings.html" class="text-sm bg-blue-600 text-white px-3 py-1.5 rounded transition font-medium">APIs</a>
+                <a href="../index.html" class="text-sm bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded transition">Volver al sitio</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow p-6 w-full space-y-8">
+            <div>
+                <h2 class="text-2xl font-semibold text-gray-800 mb-2">Gestión de Credenciales para Imágenes y Texto IA</h2>
+                <p class="text-gray-600">Configura y nombra libremente los servicios web o pasarelas que Booky utilizará para extraer las fotografías exactas y las descripciones inteligentes de cualquier servicio.</p>
+            </div>
+
+            <!-- Formulario Principal -->
+            <form id="booky-apis-form" class="space-y-8">
+                
+                <!-- SECCIÓN 1: APIS DE IMÁGENES -->
+                <div class="border border-gray-200 rounded-lg p-5 bg-gray-50/50">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-medium text-gray-800 flex items-center gap-2">
+                            <span>📷</span> APIs de Imágenes (Búsqueda Visual Exacta)
+                        </h3>
+                        <button type="button" id="add-image-api-btn" class="bg-white hover:bg-gray-100 text-blue-600 font-medium px-3 py-1.5 rounded border border-blue-200 text-xs transition shadow-sm">
+                            + Agregar API de Imagen
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-4">Añade los motores, librerías o plataformas nombrándolos a tu gusto (ej. Unsplash, Pexels, Midjourney Web, etc.).</p>
+                    
+                    <!-- Contenedor dinámico hacia abajo para Imágenes -->
+                    <div id="image-apis-container" class="space-y-3">
+                        <!-- Las filas dinámicas se cargarán aquí -->
+                    </div>
+                </div>
+
+                <!-- SECCIÓN 2: APIS DE TEXTO / IA -->
+                <div class="border border-gray-200 rounded-lg p-5 bg-gray-50/50">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-medium text-gray-800 flex items-center gap-2">
+                            <span>✍️</span> APIs de Texto / IA (Generación de Descripciones)
+                        </h3>
+                        <button type="button" id="add-text-api-btn" class="bg-white hover:bg-gray-100 text-blue-600 font-medium px-3 py-1.5 rounded border border-blue-200 text-xs transition shadow-sm">
+                            + Agregar API de Texto/IA
+                        </button>
+                    </div>
+                    <p class="text-xs text-gray-500 mb-4">Añade los modelos de lenguaje o bases de texto nombrándolos como prefieras (ej. OpenAI GPT, Gemini API, Wikipedia Endpoint, etc.).</p>
+                    
+                    <!-- Contenedor dinámico hacia abajo para Textos -->
+                    <div id="text-apis-container" class="space-y-3">
+                        <!-- Las filas dinámicas se cargarán aquí -->
+                    </div>
+                </div>
+
+                <!-- Estado del Sistema y Botón de Guardado General -->
+                <div class="flex items-center justify-between pt-4 border-t border-gray-200">
+                    <span id="save-status" class="text-sm font-medium text-green-600 hidden">¡Credenciales guardadas correctamente en Firestore!</span>
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg transition text-sm shadow-sm ml-auto">
+                        Guardar Todas las Credenciales
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+    <!-- Script enlazado a la lógica de control de APIs -->
+    <script type="module" src="../assets/dist/settings/admin/admin-apis.js"></script>
+</body>
+</html>

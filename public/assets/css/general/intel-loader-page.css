@@ -1,0 +1,39 @@
+/* Estilo para la cortina blanca difuminada */
+#loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9); /* Mayor opacidad */
+    z-index: 9999; /* Z-index mayor para asegurar que esté por encima de todo */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px); /* Difuminar el fondo */
+}
+
+#intelligentLoader {
+    /* Estilos básicos del cargador */
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10000; /* Z-index mayor para estar por encima de la cortina */
+
+    /* Estilos adicionales para un diseño más elegante */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+

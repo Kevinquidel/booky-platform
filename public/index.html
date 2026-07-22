@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+  <!-- Metadatos -->
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!-- Información del proyecto -->
+
+    <title>Booky - Gestión de citas y reservas</title>
+
+  <meta name="description" content="BOOKY es una plataforma web para gestionar citas, servicios y reservas de forma rápida, organizada y sencilla.">
+
+  <meta name="author" content="BOOKY">
+
+  <meta name="robots" content="index, follow">
+
+  <meta http-equiv="x-content-type-options" content="nosniff">
+
+
+
+
+  <!-- Configuración para redes sociales -->
+
+  <meta property="og:title" content="BOOKY - Gestión de citas y reservas">
+
+  <meta property="og:description" content="Administra servicios, horarios y reservas desde una plataforma moderna.">
+
+  <!-- Imagen de presentación pendiente de crear para BOOKY -->
+  <!-- <meta property="og:image" content="/assets/img/web/bookyOG.jpg"> -->
+
+  <meta property="og:type" content="website">
+
+  <meta property="og:site_name" content="BOOKY">
+
+
+
+
+  <!-- Twitter Card -->
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <meta name="twitter:title" content="BOOKY - Gestión de citas y reservas">
+
+  <meta name="twitter:description" content="Gestiona tus citas y servicios fácilmente con BOOKY.">
+
+  <!-- Imagen pendiente de crear -->
+  <!-- <meta name="twitter:image" content="/assets/img/web/bookyOG.jpg"> -->
+
+
+
+
+  <!-- Etiqueta Canónica -->
+
+  <link rel="canonical" href="/">
+
+
+  <!-- BaseUrl -->
+  <script>
+    const baseUrl = '/'; // Coloca aquí tu URL base
+    const imgBaseUrl = `${baseUrl}assets/img`;
+    const cssBaseUrl = `${baseUrl}assets/css`;
+    const jsBaseUrl = `${baseUrl}assets/dist`;
+  </script>
+
+<!-- Estilos Generales -->
+<link rel="stylesheet" href="/assets/css/general/header.css">
+<link rel="stylesheet" href="/assets/css/general/footer.css">
+<link rel="stylesheet" href="/assets/css/general/sidebar-lateral-izq.css">
+<link rel="stylesheet" href="/assets/css/general/panel.css">
+<link rel="stylesheet" href="/assets/css/general/logo.css">
+<link rel="stylesheet" href="/assets/css/general/account-navbar-panel.css">
+<link rel="stylesheet" href="/assets/css/settings/users/navbar/user-navbar-tab.css">
+<link rel="stylesheet" href="/assets/css/general/funciones/category-html.css">
+
+<!-- Notificaciones y Funciones -->
+<link rel="stylesheet" href="/assets/css/general/funciones/notification.css">
+<link rel="stylesheet" href="/assets/css/general/funciones/cropper-edit.css">
+
+<!-- Perfil de Usuario y Configuraciones -->
+<link rel="stylesheet" href="/assets/css/settings/users/profile/change-profile.image.css">
+
+<!-- Ventana modal editar perfil -->
+<link rel="stylesheet" href="/assets/css/settings/users/profile/profile-window-modal.css">
+<link rel="stylesheet" href="/assets/css/general/funciones/alternador-pestanas.css">
+<link rel="stylesheet" href="/assets/css/general/intel-loader-page.css">
+
+
+<!-- Librerías Externas -->
+<link rel="stylesheet" href="/assets/other/cropper/cropper.css">
+
+<!-- Fuentes de Iconos de Google -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!-- Estilos Específicos de Página -->
+<link rel="stylesheet" href="/assets/css/home/index.css">
+
+<!-- Botones de autenticación -->
+<link rel="stylesheet" href="/assets/css/general/auth-buttons.css">
+
+<!-- Búsqueda -->
+<link rel="stylesheet" href="/assets/css/general/funciones/booky-search.css">
+<link rel="stylesheet" href="/assets/css/general/funciones/booky-search-modal.css">
+
+  <!-- Código para el favicon -->
+  <link rel="icon" type="image/png" href="/assets/img/web/favicon.ico">
+
+  <link rel="stylesheet" href="/assets/css/general/funciones/content.css">
+
+</head>
+
+  <body>
+
+    <div id="loadingScreen" style="display: flex;">
+      <img src="/assets/img/web/Bookyx1024.svg.svg" alt="Logo de Booky" class="loading-logo">
+      <div class="progress-bar-container">
+          <div class="progress-bar"></div>
+      </div>
+  </div>
+
+  <header>
+    <div>
+      <h1 id="main-title">BOOKY - Gestión de citas y reservas</h1>
+      <p id="greeting"></p>
+    </div>
+
+    <div class="logo-container">
+      <a href="index.html">
+        <img src="/assets/img/web/Bookyx72.svg" alt="Logo de Booky" class="logo-img">
+      </a>
+    </div>    
+  </header>
+
+  <div id="searchModal" class="modal uniqueSearchModal" style="display:none;">
+    <span class="closeSearchModal">&times;</span>
+    <div class="search-container"> 
+        <div class="input-container">
+            <input type="search" class="search-input" placeholder="Buscar en la página">
+            <div class="search-button"><img src="/assets/img/search/search.svg" alt="Icono de búsqueda" class="search-svg"></div>
+            <div class="shortcut-text"><span>CTRL</span>+ B</div>
+        </div>
+        <div class="suggestions-container"></div>
+
+        <div id="results-container">
+            <!-- Aquí se mostrarán los resultados -->
+        </div>
+
+        <div id="pagination-container">
+            <!-- Aquí se mostrarán los controles de paginación -->
+        </div>
+
+        <div class="search-options"></div>
+        <div class="search-history"></div>
+    </div>
+</div>
+
+  <!-- Inicio de la barra de navegación -->
+  <div id="main-navbar" class="navbar">
+    <nav id="navigation"></nav>
+    <div id="subcategory-panel"></div>
+    
+    <div id="userGreeting" class="user-greeting is-hidden">
+        Hi, <span id="usernameDisplay"></span>!
+    </div>
+
+    <div id="auth-buttons-container">
+      <button id="login-button">
+        <span class="material-icons">login</span>
+        <span class="btn-text">Iniciar sesión</span>
+      </button>
+      <button id="signup-button">
+        <span class="material-icons">person_add</span>
+        <span class="btn-text">Registrarse</span>
+      </button>
+    </div>
+
+    <!-- Contenedor del menú desplegable del usuario -->
+    <div
+        id="booky-nav-container"
+        class="booky-nav-container is-hidden"
+        data-src="./dashboard/users/navbar/user-navbar-dropdown.html">
+    </div>
+
+    <div class="outside-btn" onclick="toggleSidebar()">
+      <img src="/assets/img/nav/sidebar-right.svg" alt="Icono de la barra lateral">
+    </div>
+  </div>
+  <!-- Fin corregido de la barra de navegación -->
+
+  <div class="sidebar">
+    <button class="toggle-btn" onclick="toggleSidebar()">
+      <img src="/assets/img/nav/Sidebar.svg" alt="Icono de la barra lateral">
+    </button>
+    <div class="sidebar-content">
+      <p>Contenido de la barra lateral</p>
+    </div>
+  </div>
+
+<div id="profileModalContainer"></div>
+
+<div id="app-view-container">
+    <!-- Aquí se cargarán dinámicamente los archivos desde public/content/ -->
+</div>
+
+<!-- Pie de página -->
+<footer>
+  <nav class="footer-navigation" id="footer-navigation">
+    <ul id="footer-menu"></ul>
+  </nav>
+
+  <div id="toggle-button" class="icon-button">
+    <img src="/assets/img/nav/sidebar-top.svg" alt="Mostrar/Ocultar menú">
+  </div>
+</footer>
+
+    <!-- Indicador de carga -->
+    <div id="intelligentLoader"></div>
+    <script src="/assets/dist/general/loadingScreen.js" defer></script>
+    <script src="/assets/dist/general/Intel-loader-page.js" defer></script>
+
+<!-- Autenticación y Control de Sesión -->
+<script src="/assets/dist/general/verification-account-init.js" type="module" defer></script>
+<script src="/assets/dist/settings/auth/session-control.js" type="module"></script>
+<script src="/assets/dist/general/auth-buttons-nav.js" type="module" defer></script>
+<script src="/assets/dist/settings/users/last-time-login.js" type="module"></script>
+<script src="/assets/dist/settings/users/change-profile-image.js" type="module" defer></script>
+<script src="/assets/dist/settings/users/navbar/user-navbar-dropdown.js" type="module" defer></script>
+
+<!-- Ventana modal editar perfil -->
+<script src="/assets/dist/settings/users/profile-window-modal.js" defer></script>
+<script src="/assets/dist/settings/users/set-view-profile-data-modal.js" type="module" defer></script>
+<script src="/assets/dist/settings/users/save-profile.js" type="module" defer></script>
+<script src="/assets/dist/settings/users/username-verification.js" type="module" defer></script>
+
+<!-- Utilidades y Funcionalidades Generales -->
+<script src="/assets/dist/general/current-year.js" type="module"></script>
+<script src="/assets/dist/general/funciones/category-html.js" defer></script>
+<script src="/assets/dist/general/panel.js" type="module" defer></script>
+<script src="/assets/dist/general/footer.js" defer></script>
+<script src="/assets/dist/general/funciones/notificaciones.js" defer></script>
+<script src="/assets/dist/general/sidebar-lateral-izq.js"></script>
+
+<!-- Script de Carga Dinámica de Contenido -->
+  <script src="/assets/dist/general/content.js" type="module" defer></script>
+
+<!-- Edición de Imágenes -->
+<script src="/assets/other/cropper/cropper.js"></script>
+<script src="/assets/other/compressor/compressor.js"></script>
+<script src="/assets/dist/general/funciones/cropper-edit.js" type="module"></script>
+
+<!-- Librerías Externas -->
+<script src="/assets/other/bootstrap/bootstrap.js"></script>
+
+<!-- Marketing y Análisis -->
+<script src="/assets/dist/marketing/google-analytics.js"></script>
+
+<!-- Url ID 
+<script src="/assets/dist/general/funciones/url-identify.js" type="module" ></script> -->
+
+
+
+</body>
+
+</html>

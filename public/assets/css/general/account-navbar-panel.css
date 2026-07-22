@@ -1,0 +1,86 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: #34495e;
+    box-shadow: 0 5px 15px rgba(52, 73, 94, 0.5);
+    border-radius: 10px;
+    padding: 0 20px;
+    color: #ecf0f1;
+    z-index: 999;
+}
+
+#navigation {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+#searchModalButton {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+#userGreeting {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+
+#auth-buttons-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    right: 120px; 
+    top: 50%;
+    transform: translateY(-50%);
+    flex-shrink: 0;
+}
+
+/* Alineación interna corregida para evitar que el texto se baje */
+#auth-buttons-container button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 6px 12px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* Ajuste fino del icono para mantenerlo a la par del texto */
+#auth-buttons-container .material-icons {
+    font-size: 18px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 0;
+}
+
+#auth-buttons-container .btn-text {
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+}
+
+/* Dispositivos más pequeños: Oculta el texto y deja solo el icono centrado */
+@media (max-width: 768px) {
+    #auth-buttons-container button {
+        padding: 6px;
+        min-width: 36px;
+        height: 36px;
+    }
+
+    #auth-buttons-container .btn-text {
+        display: none;
+    }
+}

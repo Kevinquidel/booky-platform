@@ -1,0 +1,89 @@
+<!-- =========================
+     MODAL EDITAR PERFIL
+========================= -->
+<div class="profile-modal-container"></div>
+
+<div id="myModal" class="profile-modal">
+    <div class="profile-modal-content">
+        <h2 class="profile-section-title">Editar perfil</h2>
+
+        <!-- SECCIÓN DE FOTO DE PERFIL -->
+        <section id="profile-picture-section">
+            <div class="foto-contenedor">
+                <div id="primeraLetraContainer">U</div>
+                <img id="imagenPerfil" src="" alt="Foto de perfil" style="display: none;">
+            </div>
+
+            <div class="foto-acciones">
+                <input type="file" id="botonSubirFoto" accept="image/*" style="display: none;">
+                <label for="botonSubirFoto" class="btn-accion-foto" style="cursor: pointer;">
+                    Cambiar foto
+                </label>
+                <!-- Oculto por defecto para evitar parpadeos; el JS lo muestra si hay foto -->
+                <button type="button" id="eliminarFotoPerfilBtn" class="btn-accion-foto btn-eliminar-foto" style="display: none;">
+                    Eliminar
+                </button>
+            </div>
+        </section>
+
+        <!-- CAMPOS DEL FORMULARIO -->
+        <section id="profile-basic-data">
+            <p>
+                <label for="displayName">
+                    <strong>Nombre completo</strong>
+                </label>
+                <input type="text" id="displayName" name="displayName" placeholder="Ingrese su nombre completo" autocomplete="name" maxlength="60" minlength="3" pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{3,60}$" spellcheck="false" required>
+            </p>
+            <p>
+                <label for="userEmail">
+                    <strong>Correo electrónico</strong>
+                </label>
+                <input type="email" id="userEmail" name="userEmail" autocomplete="email" readonly disabled>
+            </p>
+            <p>
+                <label for="phone">
+                    <strong>Teléfono</strong>
+                </label>
+                <input type="tel" id="phone" name="phone" placeholder="3001234567" autocomplete="tel" inputmode="numeric" maxlength="10" minlength="10" pattern="[0-9]{10}" required>
+            </p>
+            <p>
+                <label for="birthDate">
+                    <strong>Fecha de nacimiento</strong>
+                </label>
+                <input type="date" id="birthDate" name="birthDate" autocomplete="bday" min="1900-01-01" max="2013-12-31" required>
+            </p>
+        </section>
+
+        <!-- BOTONES DE ACCIÓN INFERIORES -->
+        <div class="profile-modal-actions">
+            <button type="button" id="saveProfileButton" onclick="uploadToFirestore()">
+                Guardar cambios
+            </button>
+            <button type="button" id="cancelModalButton" onclick="cancelarModal()">
+                Cerrar
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- =========================
+     MODAL DE RECORTE (CROPPER) -> NECESARIO PARA FUNCIONAR
+========================= -->
+<div id="modalRecorte" class="profile-modal" style="display: none; z-index: 10050;">
+    <div class="profile-modal-content" style="max-width: 500px; text-align: center;">
+        <h2 class="profile-section-title">Recortar foto de perfil</h2>
+        
+        <div style="width: 100%; max-height: 400px; overflow: hidden; margin-bottom: 20px;">
+            <img id="imagenRecorte" style="max-width: 100%; display: block;" alt="Imagen para recortar">
+        </div>
+
+        <div class="profile-modal-actions">
+            <button type="button" id="btnAceptarRecorte" style="background-color: #2b6cb0; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+                Aceptar
+            </button>
+            <button type="button" id="btnCancelarRecorte" style="background-color: #e53e3e; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">
+                Cancelar
+            </button>
+        </div>
+    </div>
+</div>

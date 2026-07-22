@@ -1,0 +1,32 @@
+/* Estilos para el botón que abre el modal de búsqueda */
+.search-button-modal {
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  /* Estilos para la imagen dentro del botón que abre el modal de búsqueda */
+  .search-modal-svg {
+    width: 30px; /* Ajusta el ancho según necesites */
+    height: 30px; /* Ajusta la altura según necesites */
+    filter: brightness(0) invert(1);
+  }
+
+
+  .uniqueSearchModal {
+    /* Estilos específicos para este modal */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: fixed; /* Fija el modal en la parte superior de la pantalla */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Permite desplazamiento si el contenido es más grande que el modal */
+    background-color: rgba(0,0,0,0.5); /* Color de fondo semitransparente */
+    z-index: 1000; /* Asegura que el modal esté por encima de otros contenidos */
+  }
+  
+  .closeSearchModal {
+    display: none;
+}

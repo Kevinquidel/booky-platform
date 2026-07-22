@@ -1,0 +1,44 @@
+.notice {
+    position: fixed;
+    top: 8px;
+    right: 10px;
+    width: 400px;
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 4px;
+    font-size: 12px;
+    text-align: left;
+    display: block;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    animation: hideNotice 10s 30s forwards; /* 10 segundos de duración, espera 30 segundos y luego mantiene el estado final */
+}
+
+/* Agregamos una animación para ocultar el aviso */
+@keyframes hideNotice {
+    0% {
+        opacity: 1;
+        pointer-events: auto; /* Permite interacciones del mouse al principio */
+    }
+    100% {
+        opacity: 0;
+        pointer-events: none; /* Desactiva interacciones del mouse al final */
+    }
+}
+
+.notice + .notice {
+    margin-top: 70px;
+}
+
+.copy-instructions {
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: #721c24;
+    float: right;
+}

@@ -1,0 +1,27 @@
+/* Estilo para el contenedor */
+.container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente si es necesario */
+    height: 100vh; /* Opcional: ajusta según la altura deseada */
+    padding: 20px; /* Añade un padding para asegurar espacio alrededor */
+}
+
+#categoryDisplay {
+    margin: 0 20px; /* Añade un margen horizontal para separarlo de otros elementos */
+    padding: 10px;
+    background-color: #f9f9f9;
+    color: #333;
+    border: none; /* Sin borde visible */
+    border-radius: 8px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Sombra más suave y difusa */
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    display: inline-block;
+    backdrop-filter: blur(4px); /* Filtro de desenfoque aplicado al fondo y bordes del elemento */
+}
+
+#categoryDisplay:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Sombra más intensa al pasar el mouse */
+}

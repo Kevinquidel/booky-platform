@@ -1,0 +1,71 @@
+/* Estilos del encabezado */
+header {
+    padding: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+  }
+  
+  header.scrolled {
+    background-color: #ffffff;
+  }
+  
+  #main-title {
+    font-size: 24px;
+    margin-bottom: 0;
+    color: #333;
+    text-transform: capitalize;
+    position: absolute;
+    top: 110px;
+    left: 50px;
+    opacity: 0.2;
+    animation: slide-in 17s linear infinite;
+  }
+  
+  @keyframes slide-in {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  #greeting {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 0;
+    margin-left: 10px;
+    color: #555;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+    margin-top: -35px; /* Aumenta el margen superior a 20px o el valor que prefieras */
+  }
+  
+  
+  header.scrolled #greeting {
+    opacity: 0;
+  }
+  
+  /* Estilos específicos para dispositivos móviles */
+  @media screen and (max-width: 768px) {
+    header {
+      padding: 25px;
+    }
+  
+    #main-title {
+      top: 87px;
+      left: 20px;
+      font-size: 15px;
+    }
+  
+    #greeting {
+      display: block;
+      font-size: 10px;
+      padding: 7px 7px;
+      margin-top: -30px;
+      
+    }
+  }
+  

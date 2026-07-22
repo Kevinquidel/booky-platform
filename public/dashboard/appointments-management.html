@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Citas - Booky</title>
+    <!-- Tailwind CSS para el diseño -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Barra de Navegación del Panel Admin -->
+    <header class="bg-gray-900 text-white shadow-md">
+        <div class="w-full px-6 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold">Booky — Control de Citas</h1>
+        <nav class="flex gap-4">
+            <a href="panel-admn.html" id="nav-usuarios" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Usuarios</a>
+            <a href="appointments-management.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Citas</a>
+            <a href="services-management.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Servicios</a>
+            <a href="../index.html" class="text-sm bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded transition">Volver al sitio</a>
+        </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal Expandido -->
+    <main class="w-full px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-lg shadow p-6 w-full">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Gestión y Control de Citas</h2>
+            <p class="text-gray-600 mb-6">Visualiza todas las citas agendadas por los clientes, filtra por estado y administra o actualiza sus registros en tiempo real.</p>
+
+            <!-- Tabla de Citas Expandida -->
+            <div class="w-full overflow-x-auto">
+                <table class="w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Correo</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Teléfono</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Servicio</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha y Hora</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Estado</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="appointments-table-body" class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td colspan="7" class="px-4 py-4 text-center text-gray-500">Cargando citas...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script enlazado a la ruta correspondiente del script de citas -->
+    <script type="module" src="../assets/dist/settings/admin/admin-appointments.js"></script>
+</body>
+</html>

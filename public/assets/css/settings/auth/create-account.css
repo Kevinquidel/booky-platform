@@ -1,0 +1,150 @@
+/* ==========================================================================
+   FONDO PROFESIONAL Y RELAJANTE (SIN ANIMACIONES MOLESTAS)
+   ========================================================================== */
+body {
+    background: #0f172a; /* Fondo azul oscuro profundo y moderno (Slate) */
+    background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 75%);
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Contenedor principal con sombra elegante */
+.contenedor {
+    position: relative;
+    width: 90%;
+    max-width: 440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    background-color: #ffffff;
+    padding: 36px;
+    box-sizing: border-box;
+}
+
+.contenido {
+    width: 100%;
+    text-align: left;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+h1, h2, h3 {
+    color: #1e293b;
+    text-align: center;
+    font-size: 1.45rem;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.contenido > p, 
+.contenido p {
+    color: #64748b;
+    text-align: center;
+    font-size: 0.92rem;
+    margin-bottom: 24px;
+}
+
+/* ==========================================================================
+   CAMPOS, ETIQUETAS E INPUTS
+   ========================================================================== */
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    font-size: 0.88rem;
+    color: #334155;
+    text-align: left;
+}
+
+input, select {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    background-color: #f8fafc;
+    color: #1e293b;
+    transition: all 0.2s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+/* ==========================================================================
+   CLASES ESPECÍFICAS
+   ========================================================================== */
+.campo-usuario,
+.campo-persona {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.campo-usuario input,
+.campo-persona input,
+#tipoFormulario {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 0 16px 0 !important;
+}
+
+.fecha-nacimiento-container {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    width: 100%;
+}
+
+.fecha-nacimiento-container select {
+    width: 32% !important;
+    margin-bottom: 0 !important;
+}
+
+/* ==========================================================================
+   BOTONES
+   ========================================================================== */
+button {
+    width: 100%;
+    background-color: #2563eb; /* Azul moderno de acción */
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin-top: 6px;
+}
+
+button:hover {
+    background-color: #1d4ed8;
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}

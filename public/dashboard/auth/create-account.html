@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración inicial de cuenta - Booky Gestión de citas y reservas</title>
+    <meta name="description" content="Explora un espacio en constante transformación, descubre fuentes infinitas de inspiración para desbloquear tu potencial.">
+    <meta name="author" content="Booky">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="x-content-type-options" content="nosniff">
+
+    <!-- BaseUrl -->
+    <script>
+        const baseUrl = '/'; // Coloca aquí tu URL base
+        const imgBaseUrl = `${baseUrl}assets/img`;
+        const cssBaseUrl = `${baseUrl}assets/css`;
+        const jsBaseUrl = `${baseUrl}assets/dist`;
+    </script>
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="/assets/css/settings/auth/create-account.css">
+    <link rel="stylesheet" href="/assets/css/general/funciones/notification.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/assets/img/web/favicon.ico">
+</head>
+
+<body>
+
+    <div class="contenedor">
+        <div class="contenido">
+            <form id="formulario" onsubmit="event.preventDefault();">
+
+                <h2>¡Empecemos juntos! Crea tu Perfil en Booky</h2>
+                <p>Completa los siguientes datos para configurar tu cuenta.</p>
+
+                <!-- Campo Nombre Completo -->
+                <div class="campo-perfil">
+                    <label for="displayName"><strong>Nombre completo:</strong></label>
+                    <input 
+                        type="text" 
+                        id="displayName" 
+                        name="displayName" 
+                        placeholder="Ingrese su nombre completo" 
+                        autocomplete="name"
+                        maxlength="60" 
+                        minlength="3" 
+                        pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ ]{3,60}$" 
+                        spellcheck="false" 
+                        required>
+                </div>
+
+                <!-- Campo Teléfono -->
+                <div class="campo-perfil">
+                    <label for="phone"><strong>Teléfono:</strong></label>
+                    <input 
+                        type="tel" 
+                        id="phone" 
+                        name="phone" 
+                        placeholder="3001234567" 
+                        autocomplete="tel" 
+                        inputmode="numeric"
+                        maxlength="10" 
+                        minlength="10" 
+                        pattern="[0-9]{10}" 
+                        required>
+                </div>
+
+                <!-- Campo Fecha de Nacimiento (Calendario Nativo) -->
+                <div class="campo-perfil">
+                    <label for="birthDate"><strong>Fecha de nacimiento:</strong></label>
+                    <input 
+                        type="date" 
+                        id="birthDate" 
+                        name="birthDate" 
+                        autocomplete="bday" 
+                        min="1900-01-01" 
+                        max="2013-12-31" 
+                        required>
+                </div>
+
+                <!-- Contenedor de Botón de Acción -->
+                <div class="button-container">
+                    <button type="button" id="saveProfileButton">Comencemos</button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="/assets/dist/settings/users/last-time-login.js" type="module"></script>
+    <script src="/assets/dist/settings/users/save-profile.js" type="module"></script>
+    <script src="/assets/dist/settings/auth/create-account.js"></script>
+    <script src="/assets/dist/general/funciones/notificaciones.js" defer></script>
+    <script src="/assets/dist/settings/users/set-view-profile-data.js" type="module"></script>
+    <script src="/assets/dist/general/verification-account-init.js" type="module"></script>
+
+</body>
+</html>
