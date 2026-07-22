@@ -1,25 +1,30 @@
-# BOOKY
-
 <div align="center">
 
-<h1>BOOKY</h1>
+# 📅 BOOKY
+### Plataforma Web de Gestión de Citas y Reservas
+
+<p>
+  <img src="https://img.shields.io/badge/Status-En%20Desarrollo-blue?style=flat-square" alt="Status">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black" alt="JavaScript">
+  <img src="https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black" alt="Firebase">
+</p>
 
 </div>
 
-## Descripción
+---
 
-BOOKY es una plataforma web de gestión de citas que permite a los usuarios consultar servicios disponibles, realizar reservas y administrar sus citas de manera sencilla.
+## 🚀 Descripción del Proyecto
 
-El sistema busca optimizar la organización de horarios, reducir tiempos de espera y facilitar la comunicación entre usuarios y proveedores de servicios.
+**BOOKY** es una plataforma web desarrollada como proyecto de sistemas para la gestión integral de citas, reservas y control de perfiles de usuario. Su objetivo principal es optimizar la organización de horarios, reducir tiempos de espera y agilizar la interacción entre los clientes y los proveedores de servicios mediante una interfaz intuitiva y eficiente.
 
-## Tecnologías utilizadas
+---
 
-- HTML5
-- CSS3
-- JavaScript
-- Firebase
-- Firebase Authentication
-- Cloud Firestore
-- Firebase Storage
+## 🛠️ Tecnologías y Servicios
 
-## Estructura del proyecto
+* **Frontend:** HTML5, CSS3, JavaScript
+* **Backend & Base de Datos:** Firebase (Cloud Firestore)
+* **Autenticación:** Firebase Authentication
+* **Almacenamiento:** Firebase Storage
+* **Diseño y Prototipado:** Figma
