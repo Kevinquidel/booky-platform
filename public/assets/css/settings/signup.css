@@ -1,151 +1,226 @@
-/* Estilos generales */
+/* ==========================================================================
+   ESTILOS DE REGISTRO (ADAPTADOS CON EL NUEVO DISEÑO Y ALTO CONTRASTE)
+   ========================================================================== */
+
+/* Fondo profesional y relajante */
 body {
-  overflow-y: hidden; /* Ocultar barra de desplazamiento vertical */
+    background: #0f172a;
+    background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 75%);
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
-/* Estilos para el contenedor del registro */
+/* Contenedor del registro */
 .register-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  font-family: 'Roboto', sans-serif; /* Cambié la fuente a 'Roboto' */
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  background: linear-gradient(135deg, #00bcd4, #004080, #8e44ad);
-  animation: changeGradient 15s linear infinite;
+    position: relative;
+    width: 90%;
+    max-width: 440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    background-color: #ffffff;
+    padding: 40px;
+    box-sizing: border-box;
+    z-index: 1;
+    overflow: visible;
+    animation: none;
 }
 
-@keyframes changeGradient {
-  0%, 100% {
-    background: linear-gradient(135deg, #00bcd4, #004080, #8e44ad);
-  }
-  25%, 50% {
-    background: linear-gradient(135deg, #3498db, #2c3e50, #e74c3c);
-  }
-  75% {
-    background: linear-gradient(135deg, #3498db, #a9cce3, #f5b7b1);
-
-  }
-}
-
-/* Estilos para el formulario de registro */
+/* Formulario de registro */
 .register-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 400px;
-  background-color: #fff;
-  padding: 25px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
 }
 
-.register-title {
-  margin-bottom: 15px; /* Puedes ajustar el valor según tus necesidades */
+.register-title,
+h1, h2, h3 {
+    color: #0f172a;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
 }
 
-
-/* Estilos para los campos de entrada */
+/* Campos de entrada */
 .register-form input[type="email"],
-.register-form input[type="password"] {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  transition: border-color 0.3s, background-color 0.3s;
-}
-
-/* Estilos para los botones y enlaces */
-.register-button,
-.social-login-button,
-.login-link {
-  width: 100%;
-  padding: 15px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-color 0.3s, color 0.3s;
-  margin-bottom: 10px;
-}
-
-.register-button {
-  margin-bottom: 20px;
-  background-color: #5abd94; /* Color de fondo inicial (verde) */
-}
-
-.social-login-button {
-  background-color: #fff;
-  color: #000;
-  border: 1px solid #ddd;
-  margin-bottom: 25px;
-}
-
-/* Estilos para enlaces y texto adicional */
-.login-link {
-  color: #888888;
-  margin-bottom: 10px;
-}
-
-.register-button:hover,
-.social-login-button:hover,
-.login-link:hover {
-  background-color: #8257a6; /* Color de fondo al pasar el mouse (hover) */
-  color: #fff;
-  text-decoration: none;
-
-}
-
-.or-divider {
-  margin: 15px 0;
-  font-size: 14px;
-  color: #888;
-}
-
-.social-login-logo {
-  width: 20px;
-  height: 20px;
-  margin-right: 8px;
+.register-form input[type="password"],
+#passwordRegister,
+#passwordRegister[type="text"] {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 13px 16px;
+    margin-bottom: 16px;
+    box-sizing: border-box;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background-color: #f8fafc;
+    color: #1e293b;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .register-form input[type="email"]:focus,
-.register-form input[type="password"]:focus {
-  border-color: #3498db;
-  outline: none;
+.register-form input[type="password"]:focus,
+#passwordRegister:focus,
+#passwordRegister[type="text"]:focus {
+    outline: none;
+    border-color: #2563eb;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
 .register-form input[type="email"]:valid,
-.register-form input[type="password"]:valid {
-  border-color: #28a745;
-}
-
+.register-form input[type="password"]:valid,
 .register-form input[type="email"]:invalid,
 .register-form input[type="password"]:invalid {
-  border-color: #dc3545;
+    border-color: #e2e8f0;
 }
 
+/* Botón principal de registro */
+.register-button {
+    width: 100%;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #fff;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 4px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+}
+
+.register-button:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+    text-decoration: none;
+}
+
+.register-button:active {
+    transform: translateY(0);
+}
+
+/* Divisor elegante */
+.or-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 16px 0 20px 0;
+    font-size: 0.85rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.or-divider::before,
+.or-divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.or-divider::before { margin-right: 12px; }
+.or-divider::after { margin-left: 12px; }
+
+/* Botón social (Google) con el mismo estilo de alto contraste */
+.social-login-button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 2px solid #a1a1aa !important; 
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 12px;
+    background-color: #ffffff; 
+    color: #111827; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.2) !important; 
+}
+
+.social-login-button:hover {
+    background-color: #f9fafb; 
+    border-color: #6b7280 !important;
+    color: #000000;
+    transform: translateY(-3px); 
+    box-shadow: 0 12px 20px -4px rgba(0, 0, 0, 0.25) !important; 
+    text-decoration: none;
+}
+
+.social-login-button:active {
+    transform: translateY(0);
+    background-color: #e5e7eb;
+    box-shadow: 0 4px 10px -2px rgba(0, 0, 0, 0.15) !important;
+}
+
+.social-login-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.social-login-button:hover .social-login-logo {
+    transform: scale(1.1);
+}
+
+/* Enlace de inicio de sesión */
+.login-link {
+    width: 100%;
+    padding: 4px;
+    font-size: 0.88rem;
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    display: block;
+    margin: 0 auto 12px auto;
+    text-align: center;
+    color: #64748b;
+    background: transparent;
+}
+
+.login-link:hover {
+    background-color: transparent;
+    color: #2563eb;
+    text-decoration: underline;
+}
+
+/* Mensajes de error */
 #errorEmail,
 #errorPasswordRegister {
-  font-size: 12px;
-  font-family: 'Arial', sans-serif;
-  color: red; /* Cambia el color según tus preferencias */
-  margin-top: -5px; /* Ajusta según sea necesario para alinear con el campo de entrada */
-}
-
-
-/* Aplica estilos a input con id passwordRegister, independientemente de su tipo */
-#passwordRegister,
-#passwordRegister[type="text"] {
-  width: 100%;
-  padding: 15px;
-  margin-bottom: 20px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  transition: border-color 0.3s, background-color 0.3s;
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    color: #ef4444;
+    margin-top: -10px;
+    margin-bottom: 12px;
+    text-align: left;
+    width: 100%;
+    font-weight: 500;
 }

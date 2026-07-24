@@ -190,7 +190,7 @@ onAuthStateChanged(auth, (user) => {
     console.log('Usuario no autenticado');
     // Redirigir al usuario a /index.html si está en /public/dashboard/auth/create-account.html y no está autenticado
     if (isCurrentPage("/dashboard/auth/create-account.html")) {
-      window.location.href = "../index.html";
+      window.location.href = "../../index.html";
     }
   }
 });

@@ -7,64 +7,81 @@ console.log("FIREBASE_APP_URL:", FIREBASE_APP_URL);
 console.log("FIREBASE_AUTH_URL:", FIREBASE_AUTH_URL);
 console.log("FIREBASE_FIRESTORE_URL:", FIREBASE_FIRESTORE_URL);
 
-// Importar las funciones necesarias del SDK de Firebase de forma dinámica
+// Importar las funciones necesarias del SDK de Firebase de forma dinámica (usando Popup en lugar de Redirect)
 const { initializeApp } = await import(FIREBASE_APP_URL);
-const { getAuth, signInWithRedirect, GoogleAuthProvider, signInWithEmailAndPassword, onAuthStateChanged, signOut } = await import(FIREBASE_AUTH_URL);
-const { getFirestore, doc, getDoc } = await import(FIREBASE_FIRESTORE_URL);
+const { getAuth, signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, onAuthStateChanged, signOut } = await import(FIREBASE_AUTH_URL);
+const { getFirestore, doc, getDoc, setDoc } = await import(FIREBASE_FIRESTORE_URL);
 
 // Inicializar Firebase
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
-const baseUrl = window.location.origin;
+const loginForm = document.getElementById('loginForm');
 const googleLoginButton = document.getElementById('googleLoginButton');
-const loginButton = document.getElementById('loginButton');
 const signupButton = document.querySelector('.signup-link');
 const email = document.getElementById('emailLogin');
 const password = document.getElementById('passwordLogin');
 const errorElement = document.getElementById('errorMessage');
 
-if (googleLoginButton) {
-  googleLoginButton.addEventListener('click', () => loginWithGoogle());
+// Escuchar el evento submit del formulario
+if (loginForm) {
+  loginForm.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Previene la recarga tradicional de la página
+    await submitLoginForm();
+  });
 }
 
-if (loginButton) {
-  loginButton.addEventListener('click', () => submitLoginForm());
+if (googleLoginButton) {
+  googleLoginButton.addEventListener('click', (event) => {
+    event.preventDefault();
+    loginWithGoogle();
+  });
 }
 
 if (signupButton) {
   signupButton.addEventListener('click', () => redirectToSignup());
 }
 
-// Función para iniciar sesión con Google
-function loginWithGoogle() {
-  signInWithRedirect(auth, new GoogleAuthProvider());
+// Función para iniciar sesión con Google mediante Popup
+async function loginWithGoogle() {
+  try {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
+    console.log("Autenticación con Google exitosa:", result.user.uid);
+    // onAuthStateChanged se encargará automáticamente de verificar el usuario y redirigir
+  } catch (error) {
+    console.error("Error en el popup de Google:", error.code, error.message);
+    if (error.code === 'auth/popup-closed-by-user') {
+      showErrorMessage("Ventana de inicio de sesión cerrada.");
+    } else {
+      showErrorMessage("No se pudo completar el inicio de sesión con Google.");
+    }
+  }
 }
 
 // Función para enviar el formulario de inicio de sesión con correo electrónico y contraseña
-function submitLoginForm() {
+async function submitLoginForm() {
   const emailValue = email.value.trim();
   const passwordValue = password.value;
+
+  console.log("Intentando iniciar sesión con correo:", emailValue);
 
   if (!emailValue || !passwordValue) {
     showErrorMessage('Ingresa un correo electrónico y una contraseña válidos');
     return;
   }
 
-  signInWithEmailAndPassword(auth, emailValue, passwordValue)
-    .then(async (result) => {
-      // Validar si el usuario está inhabilitado antes de dejarlo pasar
-      const user = result.user;
-      const userValidado = await verificarEstadoUsuario(user);
-      if (userValidado) {
-        redirectToMainPage();
-      }
-    })
-    .catch((error) => handleLoginError(error));
+  try {
+    await signInWithEmailAndPassword(auth, emailValue, passwordValue);
+  } catch (error) {
+    console.error("Código de error Firebase:", error.code);
+    console.error("Mensaje completo de error:", error.message);
+    handleLoginError(error);
+  }
 }
 
-// Función para verificar en Firestore si el usuario está inhabilitado
+// Función para verificar o crear automáticamente el estado del usuario en Firestore
 async function verificarEstadoUsuario(user) {
   try {
     const userDocRef = doc(firestore, "USERS", user.uid);
@@ -77,18 +94,29 @@ async function verificarEstadoUsuario(user) {
         showErrorMessage('Tu cuenta ha sido inhabilitada por un administrador.');
         return false;
       }
+    } else {
+      // Si el usuario no tiene documento (primer ingreso con Google), se lo creamos
+      console.log("El usuario no tiene documento en USERS. Creando registro inicial...");
+      await setDoc(userDocRef, {
+        email: user.email,
+        nombre: user.displayName || "Usuario",
+        createdAt: new Date().toISOString(),
+        disabled: false
+      });
     }
     return true;
   } catch (error) {
-    console.error("Error al verificar el estado del usuario:", error);
-    return true; // Permitir en caso de error de lectura para no bloquear por fallos de red
+    console.error("Error al verificar o crear el estado del usuario:", error);
+    return true; 
   }
 }
 
 // Función para manejar errores de inicio de sesión
 function handleLoginError(error) {
-  if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
+  if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential' || error.code === 'auth/wrong-password') {
     showErrorMessage('Correo electrónico o contraseña incorrectos.');
+  } else if (error.code === 'auth/invalid-email') {
+    showErrorMessage('El formato del correo electrónico no es válido.');
   } else {
     showErrorMessage('No se pudo iniciar sesión. Verifica tus credenciales.');
   }
@@ -106,33 +134,17 @@ function redirectToSignup() {
   window.location.href = urlToSignup;
 }
 
-// Mostrar mensajes de error y éxito
+// Mostrar mensajes de error
 function showErrorMessage(message) {
-  showErrorNotification(message);
-}
-
-function showSuccessMessage(message) {
-  showSuccessNotification(message);
-}
-
-// Mostrar notificación de error
-function showErrorNotification(message) {
   errorElement.textContent = message;
   errorElement.className = 'error-notification'; 
   errorElement.style.display = 'block';
 }
 
-// Mostrar notificación de éxito
-function showSuccessNotification(message) {
-  errorElement.textContent = message;
-  errorElement.className = 'success-notification'; 
-  errorElement.style.display = 'block';
-}
-
-// Comprobar el estado de autenticación (también valida al usar Google Redirect)
+// Único guardián y controlador de estado
 onAuthStateChanged(auth, async (user) => {
   if (user) {
-    console.log('Usuario autenticado:', user);
+    console.log('Usuario autenticado:', user.uid);
     const userValidado = await verificarEstadoUsuario(user);
     if (userValidado) {
       redirectToMainPage(); 

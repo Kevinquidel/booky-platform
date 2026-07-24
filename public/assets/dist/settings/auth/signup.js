@@ -6,9 +6,9 @@ import { FIREBASE_APP_URL, FIREBASE_AUTH_URL } from "../config/firebase-config-u
 console.log("FIREBASE_APP_URL:", FIREBASE_APP_URL);
 console.log("FIREBASE_AUTH_URL:", FIREBASE_AUTH_URL);
 
-// Importar las funciones necesarias del SDK de Firebase de forma dinámica
+// Importar las funciones necesarias del SDK de Firebase de forma dinámica (usando Popup)
 const { initializeApp } = await import(FIREBASE_APP_URL);
-const { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithRedirect, getRedirectResult, GoogleAuthProvider } = await import(FIREBASE_AUTH_URL);
+const { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithPopup, GoogleAuthProvider } = await import(FIREBASE_AUTH_URL);
 
 // Inicializar Firebase
 const firebaseApp = initializeApp(firebaseConfig);
@@ -16,33 +16,37 @@ const auth = getAuth(firebaseApp);
 
 const baseUrl = window.location.origin;
 const googleLoginButton = document.getElementById('googleLoginButton');
-const registerButton = document.getElementById('registerButton');
+const registerForm = document.getElementById('registerForm');
 
 if (googleLoginButton) {
   googleLoginButton.addEventListener('click', () => loginWithGoogle());
 }
 
-if (registerButton) {
-  registerButton.addEventListener('click', () => submitRegisterForm());
+if (registerForm) {
+  registerForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    submitRegisterForm();
+  });
 }
 
-function loginWithGoogle() {
+// Función para registrarse/iniciar sesión con Google mediante Popup
+async function loginWithGoogle() {
   console.log('Función loginWithGoogle ejecutada');
-  const provider = new GoogleAuthProvider();
-  signInWithRedirect(auth, provider);
-}
-
-// Manejar el resultado del redireccionamiento después de la carga de la página
-getRedirectResult(auth)
-  .then((result) => {
+  try {
+    const provider = new GoogleAuthProvider();
+    const result = await signInWithPopup(auth, provider);
     if (result && result.user) {
       handleAuthResult(result.user);
     }
-  })
-  .catch((error) => {
-    handleFirebaseError(error);
-  });
-
+  } catch (error) {
+    console.error("Error en el popup de Google:", error.code, error.message);
+    if (error.code === 'auth/popup-closed-by-user') {
+      showNotification("Ventana de registro cerrada.");
+    } else {
+      handleFirebaseError(error);
+    }
+  }
+}
 
 function submitRegisterForm() {
   const emailInput = document.getElementById('emailRegister');
@@ -50,14 +54,20 @@ function submitRegisterForm() {
 
   if (!emailInput || !passwordInput) {
     console.error('Error: Elementos de entrada no encontrados.');
+    showNotification('Error interno: Elementos del formulario no encontrados.');
     return;
   }
 
   const email = emailInput.value.trim();
   const password = passwordInput.value.trim();
 
-  if (!isValidEmail(email) || password.length < 6) {
-    console.error('Error: Campos de entrada inválidos.');
+  if (!isValidEmail(email)) {
+    showNotification('El formato del correo electrónico no es válido.');
+    return;
+  }
+
+  if (password.length < 6) {
+    showNotification('La contraseña debe tener al menos 6 caracteres.');
     return;
   }
 
@@ -75,7 +85,7 @@ function submitRegisterForm() {
 }
 
 function sendVerificationEmail(user) {
-  sendEmailVerification(auth.currentUser)
+  sendEmailVerification(user)
     .then(() => {
       redirectToVerificationPage(user);
     })
@@ -111,7 +121,6 @@ function redirectToMainPage() {
 }
 
 function isValidEmail(email) {
-  // Implementación simple de validación de correo electrónico
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
@@ -119,29 +128,22 @@ function isValidEmail(email) {
 function handleFirebaseError(error) {
   console.error('Error de Firebase:', error.code, error.message);
 
-  // Definir mensajes de error amigables para el usuario
   const errorMessages = {
     'auth/invalid-email': 'El correo electrónico no es válido.',
     'auth/user-disabled': 'El usuario ha sido deshabilitado.',
     'auth/user-not-found': 'No se encontró un usuario con ese correo.',
     'auth/wrong-password': 'La contraseña es incorrecta.',
-    'auth/user-disabled': 'El usuario ha sido deshabilitado.',
-    'auth/user-not-found': 'No se encontró un usuario con ese correo.',
     'auth/weak-password': 'La contraseña es demasiado débil.',
     'auth/email-already-in-use': 'El correo electrónico ya está en uso.',
-    'auth/invalid-email': 'El correo electrónico no es válido.',
     'auth/operation-not-allowed': 'La operación no está permitida.',
     'auth/requires-recent-login': 'La autenticación reciente es necesaria. Por favor, vuelve a iniciar sesión.',
     'auth/too-many-requests': 'Demasiados intentos. Por favor, inténtalo más tarde.',
-    // Puedes añadir más códigos de error según sea necesario
   };
 
-  // Obtener un mensaje de error amigable o usar uno por defecto
   const userFriendlyMessage = errorMessages[error.code] || 'Ocurrió un error durante la autenticación. Por favor, intenta de nuevo más tarde.';
-
-  switch (error.code) {
-    default:
-      console.error('Ocurrió un error durante la autenticación.');
-      showNotification(userFriendlyMessage); // Mostrar el mensaje amigable
+  
+  // Mostrar notificación visual en lugar de solo consola
+  if (typeof showNotification === 'function') {
+    showNotification(userFriendlyMessage);
   }
 }

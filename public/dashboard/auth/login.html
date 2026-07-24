@@ -5,9 +5,9 @@
   <!-- Metadatos -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iniciar Sesión - Xalysna Inspira el Futuro, Desbloquea tu Potencial</title>
-  <meta name="description" content="¡De vuelta a la acción! Inicia sesión y sumérgete en la diversión digital.">
-  <meta name="author" content="Xalysna">
+  <title>Iniciar Sesión - Booky - Gestión de citas y reservas</title>
+  <meta name="description" content="¡De vuelta a la acción! Inicia sesión y gestiona tus citas y reservas de forma eficiente.">
+  <meta name="author" content="Booky">
   <meta name="robots" content="index, follow">
   <meta http-equiv="x-content-type-options" content="nosniff">
 
@@ -47,9 +47,8 @@
           <label for="passwordLogin">Contraseña:</label>
           <input type="password" id="passwordLogin" name="password" placeholder="Contraseña" required autocomplete="current-password">
           <div id="errorPassword" class="error-message"></div>
-          <!-- Botón de inicio de sesión -->
-          <button type="button" id="loginButton" class="login-button" data-callback="submitLoginForm">Iniciar sesión</button>
-        </div>
+          <!-- Botón de inicio de sesión ajustado a type="submit" -->
+          <button type="submit" id="loginButton" class="login-button">Iniciar sesión</button>         </div>
 
         <!-- Columna Derecha -->
         <div class="right-column">
@@ -68,11 +67,6 @@
           <p>¿No tienes una cuenta? <a href="/dashboard/auth/signup.html" class="signup-link">Crear una cuenta</a></p>
         </div>
       </div>
-
-      <!-- Pie de página del formulario -->
-      <div class="login-footer">
-        <!-- Mensaje "¿No tienes una cuenta?" movido a la columna derecha -->
-      </div>
     </div>
   </form>
 
@@ -80,15 +74,11 @@
   <footer>
     <nav class="footer-navigation" id="footer-navigation">
       <ul id="footer-menu"></ul>
-    <!--  <a href="#" id="wallet-address" class="wallet-address" data-copy="0x96dFa67FDff3B167C0923b2fA3697E2a2b298869">
-        ❤️💰 Dona Ethereum 💰🚀
-      </a> -->
     </nav>
     <div id="toggle-button" class="icon-button">
       <img src="/assets/img/nav/sidebar-top.svg" alt="Icono de menú">
     </div>
   </footer>
-
 
   <!-- Scripts -->
   <script src="/assets/dist/settings/config/firebase-config.js" type="module" defer></script>

@@ -4,15 +4,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const passwordInput = document.getElementById('passwordRegister');
   const emailError = document.getElementById('errorEmail');
   const passwordError = document.getElementById('errorPasswordRegister');
-  const generalError = document.getElementById('generalError');
+  const generalError = document.getElementById('errorMessageRegister'); // Ajustado al ID que tienes en el HTML
+
+  if (!form || !emailInput || !passwordInput) return;
 
   emailInput.addEventListener('input', validateInput.bind(null, emailInput, emailError, validateEmailFormat, enablePasswordInput, disablePasswordInput));
   passwordInput.addEventListener('input', validateInput.bind(null, passwordInput, passwordError, validatePasswordFormat));
-
-  form.addEventListener('submit', (event) => {
-    event.preventDefault();
-    validateForm();
-  });
 
   function validateInput(inputElement, errorElement, validationFunction, enableFunction, disableFunction) {
     const value = inputElement.value.trim();
@@ -24,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isValidFormat = validationFunction(value);
 
-    setValidity(inputElement, errorElement, isValidFormat, inputElement === emailInput ? 'El formato del correo electrónico es inválido' : 'La contraseña no cumple con los requisitos');
+    setValidity(inputElement, errorElement, isValidFormat, inputElement === emailInput ? 'El formato del correo electrónico es inválido' : 'La contraseña debe tener al menos 6 caracteres');
 
-    if (isValidFormat && inputElement === emailInput) {
+    if (isValidFormat && inputElement === emailInput && typeof enableFunction === 'function') {
       enableFunction();
-    } else if (!isValidFormat && inputElement === emailInput) {
+    } else if (!isValidFormat && inputElement === emailInput && typeof disableFunction === 'function') {
       disableFunction();
     }
   }
@@ -45,16 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setValidity(inputElement, errorElement, isValid, errorMessage) {
     if (inputElement.value.trim() === '') {
-      // No mostrar mensajes de error si el campo está vacío
       isValid = true;
     }
 
     if (isValid) {
       inputElement.classList.remove('is-invalid');
-      errorElement.textContent = '';
+      if (errorElement) errorElement.textContent = '';
     } else {
       inputElement.classList.add('is-invalid');
-      errorElement.textContent = errorMessage;
+      if (errorElement) errorElement.textContent = errorMessage;
     }
   }
 
@@ -64,22 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function validatePasswordFormat(password) {
-    const passwordRegex = /^[a-zA-Z\d\W_]{6,}$/;
+    const passwordRegex = /^.{6,}$/; // Validación simple de al menos 6 caracteres
     return passwordRegex.test(password);
   }
-
-  function validateForm() {
-    validateInput(emailInput, emailError, validateEmailFormat, enablePasswordInput, disablePasswordInput);
-    validateInput(passwordInput, passwordError, validatePasswordFormat);
-
-    const invalidInputs = document.querySelectorAll('.is-invalid');
-
-    if (invalidInputs.length === 0) {
-      console.log('Formulario válido. Enviando...');
-      form.submit();
-    } else {
-      generalError.textContent = 'Por favor, corrija los errores antes de enviar el formulario.';
-    }
-  }
 });
-

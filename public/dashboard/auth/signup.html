@@ -5,15 +5,15 @@
   <!-- Metadatos -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registrarse - Xalysna Inspira el Futuro, Desbloquea tu Potencial</title>
-  <meta name="description" content="¡Únete a la fiesta digital! Regístrate y comienza la diversión en un solo clic.">
-  <meta name="author" content="Xalysna">
+  <title>Registrarse - Booky, plataforma de citas</title>
+  <meta name="description" content="Crea tu cuenta en Booky y comienza a gestionar tus citas de forma rápida y sencilla.">
+  <meta name="author" content="Booky">
   <meta name="robots" content="index, follow">
   <meta http-equiv="x-content-type-options" content="nosniff">
 
   <!-- BaseUrl -->
   <script>
-    const baseUrl = '/'; // Coloca aquí tu URL base
+    const baseUrl = '/';
     const imgBaseUrl = `${baseUrl}assets/img`;
     const cssBaseUrl = `${baseUrl}assets/css`;
     const jsBaseUrl = `${baseUrl}assets/dist`;
@@ -30,7 +30,6 @@
 </head>
 
 <body>
-
 
 <!-- Formulario de registro -->
 <form id="registerForm">
@@ -51,8 +50,8 @@
         <input type="password" id="passwordRegister" name="password" placeholder="Ingresa tu Contraseña" required autocomplete="new-password">
         <div id="errorPasswordRegister" class="error-message"></div>
 
-        <!-- Botón de registro -->
-        <button type="button" id="registerButton" class="register-button" data-callback="submitRegisterForm">Registrarse</button>
+        <!-- Botón de registro corregido a type="submit" -->
+        <button type="submit" id="registerButton" class="register-button">Registrarse</button>
 
       </div>
 
@@ -72,27 +71,18 @@
         <p>¿Ya tienes una cuenta? <a href="/dashboard/auth/login.html" class="login-link">Iniciar sesión</a></p>
       </div>
     </div>
-
-    <!-- Pie de página del formulario -->
-    <div class="login-footer">
-      <!-- Mensaje "¿No tienes una cuenta?" movido a la columna derecha -->
-    </div>
   </div>
 </form>
 
-
-  <!-- Pie de página -->
-  <footer>
-    <nav class="footer-navigation" id="footer-navigation">
-      <ul id="footer-menu"></ul>
-    <!--  <a href="#" id="wallet-address" class="wallet-address" data-copy="0x96dFa67FDff3B167C0923b2fA3697E2a2b298869">
-        ❤️💰 Dona Ethereum 💰🚀
-      </a> -->
-    </nav>
-    <div id="toggle-button" class="icon-button">
-      <img src="/assets/img/nav/sidebar-top.svg" alt="Icono de menú">
-    </div>
-  </footer>
+<!-- Pie de página -->
+<footer>
+  <nav class="footer-navigation" id="footer-navigation">
+    <ul id="footer-menu"></ul>
+  </nav>
+  <div id="toggle-button" class="icon-button">
+    <img src="/assets/img/nav/sidebar-top.svg" alt="Icono de menú">
+  </div>
+</footer>
 
 <!-- Scripts -->
 <script src="/assets/dist/settings/config/firebase-config.js" type="module" defer></script>

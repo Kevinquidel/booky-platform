@@ -1,90 +1,153 @@
-/* Estilos generales */
+/* ==========================================================================
+   ESTILOS DE VERIFICACIÓN (ADAPTADO AL DISEÑO DE BOOKY)
+   ========================================================================== */
+
+/* Fondo profesional y relajante idéntico al login */
 body {
-    overflow-y: hidden; /* Ocultar barra de desplazamiento vertical */
-    margin: 0; /* Agregado para evitar el margen predeterminado del body */
-  }
-  
-  /* Estilos para el contenedor del registro */
-  #styleContainer {
+    background: #0f172a;
+    background-image: radial-gradient(circle at 50% 0%, #1e293b 0%, #0f172a 75%);
+    margin: 0;
+    font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
-    font-family: 'Roboto', sans-serif; /* Cambié la fuente a 'Roboto' */
-    position: relative;
-    z-index: 1;
     overflow: hidden;
-    background: linear-gradient(135deg, #00bcd4, #004080, #8e44ad);
-    animation: changeGradient 15s linear infinite;
-  }
-  
-  @keyframes changeGradient {
-    0%, 100% {
-      background: linear-gradient(135deg, #00bcd4, #004080, #8e44ad);
-    }
-    25%, 50% {
-      background: linear-gradient(135deg, #3498db, #2c3e50, #e74c3c);
-    }
-    75% {
-      background: linear-gradient(135deg, #3498db, #a9cce3, #f5b7b1);
-    }
-  }
-  
-  /* Estilo para el formulario dentro del contenedor */
-  .register-form {
+}
+
+/* Contenedor principal de la verificación */
+#styleContainer {
+    position: relative;
+    width: 90%;
+    max-width: 440px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    max-width: auto; /* Añadido para limitar el ancho del formulario */
-    margin: auto; /* Añadido para centrar el formulario horizontalmente */
-    padding: 20px; /* Añadido para dar espacio al contenido dentro del formulario */
-    background-color: #fff; /* Añadido un fondo blanco al formulario */
-    border-radius: 8px; /* Añadido para suavizar las esquinas del formulario */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Añadido para dar sombra al formulario */
-  }
-  
-  /* Estilo para los elementos del formulario (por ejemplo, inputs, botones, etc.) */
-  .register-form input,
-  .register-form button {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-  }
-  
-  /* Estilo adicional para los botones */
-  .register-form button {
-    background-color: #5abd94; /* Color de fondo inicial (verde) */
-    color: #000000;
-    cursor: pointer;
-    border: none; /* Añadido para quitar el borde del botón */
-  }
-  
-  /* Estilo para el estado hover del botón */
-  .register-form button:hover {
-    background-color: #8257a6; /* Color de fondo al pasar el mouse (hover) */
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  
-  /* Estilo para el texto dentro del formulario */
-  .register-form label {
-    margin-bottom: 5px;
-  }
+    z-index: 1;
+    overflow: visible;
+}
 
-  /* Estilos para etiquetas de correo electrónico */
+/* Estilo para el formulario dentro del contenedor */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #ffffff;
+    padding: 24px 36px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+
+/* Estilo para los títulos */
+.register-title,
+h1, h2, h3 {
+    color: #0f172a;
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 24px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+}
+
+/* Estilo para las etiquetas */
+.register-form label,
 label {
     display: block;
-    margin-bottom: 5px;
-  }
-  
-  /* Estilos para campos de correo electrónico */
-  input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 8px;
+    text-align: left;
+}
+
+/* Estilo para los elementos de entrada (inputs) */
+.register-form input[type="email"],
+.register-form input[type="password"],
+.register-form input[type="text"],
+input[type="email"] {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 13px 16px;
+    margin-bottom: 16px;
     box-sizing: border-box;
-  }
-  
+    border: 1.5px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background-color: #f8fafc;
+    color: #1e293b;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.register-form input[type="email"]:focus,
+.register-form input[type="password"]:focus,
+.register-form input[type="text"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    border-color: #2563eb;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+/* Estilo unificado para botones y enlaces con apariencia de botón */
+.register-form button,
+.register-form .submit-button,
+button,
+.submit-button {
+    width: 100%;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: #fff !important;
+    padding: 13px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 4px;
+    margin-bottom: 16px;
+    text-decoration: none;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    display: inline-block;
+}
+
+/* Estilo para el estado hover del botón */
+.register-form button:hover,
+.register-form .submit-button:hover,
+button:hover,
+.submit-button:hover {
+    background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+    transform: translateY(-1px);
+    color: #fff !important;
+    text-decoration: none;
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.35);
+}
+
+.register-form button:active,
+.register-form .submit-button:active,
+button:active,
+.submit-button:active {
+    transform: translateY(0);
+}
+
+/* Botones con enlace que se ajustan al contenido o se centran */
+a.submit-button.btn-inline {
+    width: auto !important;
+    display: inline-block !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px 24px;
+}
+
+/* Espaciado correcto para los párrafos dentro de las tarjetas */
+.register-form p {
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: #475569;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+}
