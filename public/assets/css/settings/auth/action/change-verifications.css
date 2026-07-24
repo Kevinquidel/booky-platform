@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ESTILOS DE VERIFICACIÓN (ADAPTADO AL DISEÑO DE BOOKY)
+   ESTILOS DE ACCIÓN Y VERIFICACIÓN (BOOKY)
    ========================================================================== */
 
 /* Fondo profesional y relajante idéntico al login */
@@ -15,7 +15,7 @@ body {
     overflow: hidden;
 }
 
-/* Contenedor principal de la verificación */
+/* Contenedor principal de los flujos de acción */
 #styleContainer {
     position: relative;
     width: 90%;
@@ -27,7 +27,7 @@ body {
     overflow: visible;
 }
 
-/* Estilo para el formulario dentro del contenedor */
+/* Estilo para la tarjeta contenedora / formulario interno */
 .register-form {
     display: flex;
     flex-direction: column;
@@ -39,7 +39,11 @@ body {
     box-sizing: border-box;
 }
 
-/* Estilo para los títulos */
+/* ==========================================================================
+   TIPOGRAFÍA Y CONTENIDO
+   ========================================================================== */
+
+/* Títulos principales */
 .register-title,
 h1, h2, h3 {
     color: #0f172a;
@@ -51,7 +55,17 @@ h1, h2, h3 {
     letter-spacing: -0.025em;
 }
 
-/* Estilo para las etiquetas */
+/* Párrafos descriptivos */
+.register-form p {
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: #475569;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Etiquetas de formularios */
 .register-form label,
 label {
     display: block;
@@ -62,7 +76,10 @@ label {
     text-align: left;
 }
 
-/* Estilo para los elementos de entrada (inputs) */
+/* ==========================================================================
+   CAMPOS DE ENTRADA (INPUTS)
+   ========================================================================== */
+
 .register-form input[type="email"],
 .register-form input[type="password"],
 .register-form input[type="text"],
@@ -90,7 +107,10 @@ input[type="email"]:focus {
     box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
 }
 
-/* Estilo unificado para botones y enlaces con apariencia de botón */
+/* ==========================================================================
+   BOTONES Y ACCIONES
+   ========================================================================== */
+
 .register-form button,
 .register-form .submit-button,
 button,
@@ -114,7 +134,6 @@ button,
     display: inline-block;
 }
 
-/* Estilo para el estado hover del botón */
 .register-form button:hover,
 .register-form .submit-button:hover,
 button:hover,
@@ -133,21 +152,11 @@ button:active,
     transform: translateY(0);
 }
 
-/* Botones con enlace que se ajustan al contenido o se centran */
+/* Variante de botones en línea ajustados al contenido */
 a.submit-button.btn-inline {
     width: auto !important;
     display: inline-block !important;
     margin-left: auto;
     margin-right: auto;
     padding: 12px 24px;
-}
-
-/* Espaciado correcto para los párrafos dentro de las tarjetas */
-.register-form p {
-    margin-top: 0;
-    margin-bottom: 24px;
-    color: #475569;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    text-align: center;
 }
