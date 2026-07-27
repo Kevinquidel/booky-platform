@@ -5,59 +5,30 @@
 
   <!-- Metadatos -->
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-  <!-- Información del proyecto -->
-
-    <title>Booky - Gestión de citas y reservas</title>
-
-  <meta name="description" content="BOOKY es una plataforma web para gestionar citas, servicios y reservas de forma rápida, organizada y sencilla.">
-
-  <meta name="author" content="BOOKY">
-
+  <!-- Información del proyecto (Centralizada / Dinámica) -->
+  <title>Cargando...</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
   <meta name="robots" content="index, follow">
-
   <meta http-equiv="x-content-type-options" content="nosniff">
 
-
-
-
   <!-- Configuración para redes sociales -->
-
-  <meta property="og:title" content="BOOKY - Gestión de citas y reservas">
-
-  <meta property="og:description" content="Administra servicios, horarios y reservas desde una plataforma moderna.">
-
-  <!-- Imagen de presentación pendiente de crear para BOOKY -->
-  <!-- <meta property="og:image" content="/assets/img/web/bookyOG.jpg"> -->
-
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="">
   <meta property="og:type" content="website">
-
-  <meta property="og:site_name" content="BOOKY">
-
-
-
+  <meta property="og:site_name" content="">
 
   <!-- Twitter Card -->
-
   <meta name="twitter:card" content="summary_large_image">
-
-  <meta name="twitter:title" content="BOOKY - Gestión de citas y reservas">
-
-  <meta name="twitter:description" content="Gestiona tus citas y servicios fácilmente con BOOKY.">
-
-  <!-- Imagen pendiente de crear -->
-  <!-- <meta name="twitter:image" content="/assets/img/web/bookyOG.jpg"> -->
-
-
-
+  <meta name="twitter:title" content="">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image" content="">
 
   <!-- Etiqueta Canónica -->
-
   <link rel="canonical" href="/">
-
 
   <!-- BaseUrl -->
   <script>
@@ -66,6 +37,9 @@
     const cssBaseUrl = `${baseUrl}assets/css`;
     const jsBaseUrl = `${baseUrl}assets/dist`;
   </script>
+
+  <!-- Script Dinámico de Metadatos (Centralizado desde Firestore) -->
+  <script src="/assets/dist/settings/admin/load-metadata.js" type="module"></script>
 
 <!-- Estilos Generales -->
 <link rel="stylesheet" href="/assets/css/general/header.css">
@@ -89,7 +63,6 @@
 <link rel="stylesheet" href="/assets/css/general/funciones/alternador-pestanas.css">
 <link rel="stylesheet" href="/assets/css/general/intel-loader-page.css">
 
-
 <!-- Librerías Externas -->
 <link rel="stylesheet" href="/assets/other/cropper/cropper.css">
 
@@ -106,21 +79,19 @@
 <link rel="stylesheet" href="/assets/css/general/funciones/booky-search.css">
 <link rel="stylesheet" href="/assets/css/general/funciones/booky-search-modal.css">
 
-  <!-- Código para el favicon -->
-  <link rel="icon" type="image/png" href="/assets/img/web/favicon.ico">
-
   <link rel="stylesheet" href="/assets/css/general/funciones/content.css">
 
 </head>
 
   <body>
 
-    <div id="loadingScreen" style="display: flex;">
-      <img src="/assets/img/web/Bookyx1024.svg.svg" alt="Logo de Booky" class="loading-logo">
-      <div class="progress-bar-container">
-          <div class="progress-bar"></div>
-      </div>
+<!-- En la pantalla de carga -->
+<div id="loadingScreen" style="display: flex;">
+  <img src="/assets/img/web/Bookyx1024.svg.svg" alt="Logo de Booky" class="loading-logo" id="loading-logo-img">
+  <div class="progress-bar-container">
+      <div class="progress-bar"></div>
   </div>
+</div>
 
   <header>
     <div>
@@ -128,11 +99,12 @@
       <p id="greeting"></p>
     </div>
 
-    <div class="logo-container">
-      <a href="index.html">
-        <img src="/assets/img/web/Bookyx72.svg" alt="Logo de Booky" class="logo-img">
-      </a>
-    </div>    
+<!-- En el header -->
+<div class="logo-container">
+  <a href="index.html">
+    <img src="/assets/img/web/Bookyx72.svg" alt="Logo de Booky" class="logo-img" id="header-logo-img">
+  </a>
+</div>    
   </header>
 
   <div id="searchModal" class="modal uniqueSearchModal" style="display:none;">
@@ -234,7 +206,7 @@
 <script src="/assets/dist/settings/users/profile-window-modal.js" defer></script>
 <script src="/assets/dist/settings/users/set-view-profile-data-modal.js" type="module" defer></script>
 <script src="/assets/dist/settings/users/save-profile.js" type="module" defer></script>
-<script src="/assets/dist/settings/users/username-verification.js" type="module" defer></script>
+<script src="/assets/dist/settings/auth/admin-super-initializer.js" type="module" defer></script>
 
 <!-- Utilidades y Funcionalidades Generales -->
 <script src="/assets/dist/general/current-year.js" type="module"></script>
@@ -257,11 +229,6 @@
 
 <!-- Marketing y Análisis -->
 <script src="/assets/dist/marketing/google-analytics.js"></script>
-
-<!-- Url ID 
-<script src="/assets/dist/general/funciones/url-identify.js" type="module" ></script> -->
-
-
 
 </body>
 

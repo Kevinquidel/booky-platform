@@ -69,3 +69,16 @@ header {
     }
   }
   
+
+  /* Ocultar elementos dinámicos antes de que cargue Firestore para evitar saltos */
+  body:not(.metadata-loaded) #main-title,
+  body:not(.metadata-loaded) #header-logo-img,
+  body:not(.metadata-loaded) #loading-logo-img {
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+  }
+  body.metadata-loaded #main-title,
+  body.metadata-loaded #header-logo-img,
+  body.metadata-loaded #loading-logo-img {
+      opacity: 1;
+  }

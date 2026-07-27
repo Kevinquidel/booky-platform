@@ -11,20 +11,28 @@
             <h3>Nueva Reserva</h3>
             <p>Completa los campos a continuación para procesar tu cita con nuestros profesionales.</p>
             
-            <!-- Formulario de reserva con onsubmit de seguridad -->
-            <form id="booking-form" onsubmit="event.preventDefault();" style="margin-top: 20px; display: flex; flex-direction: column; gap: 16px;">
+            <!-- Formulario de reserva con IDs vinculados al nuevo mecanismo interactivo -->
+            <form id="booking-form" style="margin-top: 20px; display: flex; flex-direction: column; gap: 16px;">
+                
+                <!-- Contenedor de Servicios (Reemplaza el select tradicional por tarjetas limpias manteniendo la estructura) -->
                 <div style="display: flex; flex-direction: column; gap: 6px;">
-                    <label for="service-select" style="font-weight: 600; color: #1e293b; font-size: 0.95rem;">Seleccionar Servicio:</label>
-                    <select id="service-select" style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; background-color: #fff;">
-                        <option value="">Cargando servicios disponibles...</option>
-                    </select>
-                    <!-- Vista previa dinámica de la descripción del servicio si la tiene -->
-                    <div id="service-description-preview" style="display: none; font-size: 0.85rem; color: #64748b; background-color: #f8fafc; padding: 8px 12px; border-radius: 6px; border-left: 3px solid #2563eb; margin-top: 4px;"></div>
+                    <label style="font-weight: 600; color: #1e293b; font-size: 0.95rem;">Seleccionar Servicio:</label>
+                    <div id="services-grid-container" style="display: flex; flex-direction: column; gap: 8px;">
+                        <p style="font-size: 0.85rem; color: #64748b;">Cargando servicios disponibles...</p>
+                    </div>
+                </div>
+
+                <!-- Fecha y Hora (Separada de forma cómoda) -->
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                    <label for="appointment-datetime" style="font-weight: 600; color: #1e293b; font-size: 0.95rem;">Fecha:</label>
+                    <input type="date" id="appointment-datetime" style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; background-color: #fff;">
                 </div>
 
                 <div style="display: flex; flex-direction: column; gap: 6px;">
-                    <label for="booking-date" style="font-weight: 600; color: #1e293b; font-size: 0.95rem;">Fecha y Hora:</label>
-                    <input type="datetime-local" id="booking-date" style="padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; background-color: #fff;">
+                    <label style="font-weight: 600; color: #1e293b; font-size: 0.95rem;">Hora Disponible:</label>
+                    <div id="available-slots-container" style="padding: 8px; background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px;">
+                        <span style="font-size: 0.85rem; color: #64748b; font-style: italic;">Selecciona un servicio y una fecha para ver las horas disponibles.</span>
+                    </div>
                 </div>
 
                 <button type="submit" class="btn" style="background-color: #2563eb; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; margin-top: 10px;">
@@ -35,7 +43,7 @@
     </div>
 </section>
 
-<!-- Script para procesar y guardar la reserva en el documento del usuario -->
+<!-- Script para procesar y guardar la reserva en la colección APPOINTMENT -->
 <script type="module" src="../assets/dist/settings/client/client-booking.js"></script>
 
 <script type="module" src="../assets/dist/general/content.js"></script>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booky — Gestión de Metadatos y SEO</title>
+    <!-- Tailwind CSS para el diseño -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <!-- Barra de Navegación del Panel Admin -->
+    <header class="bg-gray-900 text-white shadow-md">
+        <div class="w-full px-6 py-3 flex justify-between items-center">
+            <h1 class="text-xl font-bold">Booky — Configuración Global del Sitio</h1>
+            <nav class="flex gap-4">
+                <a href="panel-admn.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Usuarios</a>
+                <a href="appointments-management.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Citas</a>
+                <a href="services-management.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Servicios</a>
+                <a href="metadata-management.html" class="text-sm text-white font-semibold bg-gray-800 px-3 py-1.5 rounded transition">Metadatos</a>
+                <a href="../index.html" class="text-sm bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded transition">Volver al sitio</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="w-full px-4 sm:px-6 lg:px-8 py-8 max-w-4xl mx-auto">
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-xl font-semibold text-gray-800 mb-2">Editar Metadatos y SEO Globales</h2>
+            <p class="text-sm text-gray-500 mb-6">Sube una única imagen maestra y el sistema generará automáticamente todos los favicons, iconos táctiles y recursos de la aplicación.</p>
+            
+            <form id="metadata-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Nombre del Sitio (Site Name) <span class="text-red-500">*</span></label>
+                    <input type="text" id="meta-sitename" required class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Ej. BOOKY">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Título Principal de la Página (Title) <span class="text-red-500">*</span></label>
+                    <input type="text" id="meta-title" required class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Ej. Booky - Gestión de citas y reservas">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Descripción General (SEO Description) <span class="text-red-500">*</span></label>
+                    <textarea id="meta-description" rows="3" required class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Breve resumen de la plataforma..."></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Autor</label>
+                    <input type="text" id="meta-author" class="w-full bg-gray-50 border border-gray-300 rounded-lg p-2.5 text-sm focus:ring-blue-500 focus:border-blue-500" placeholder="Ej. BOOKY">
+                </div>
+
+                <!-- SECCIÓN DE LOGOTIPO MAESTRO CON AUTO-GENERACIÓN -->
+                <div class="border border-gray-200 rounded-lg p-4 bg-gray-50">
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Logotipo Maestro de la App (PNG sin fondo)</label>
+                    <p class="text-xs text-gray-500 mb-3">Sube un archivo <span class="font-semibold text-gray-700">PNG de exactamente 1024x1024 px y sin fondo</span>. Se redimensionará automáticamente para todos los dispositivos.</p>
+                    
+                    <div class="flex items-center gap-4">
+                        <!-- Miniatura de Vista Previa -->
+                        <div class="w-20 h-20 bg-gray-900 border border-gray-300 rounded-lg overflow-hidden flex items-center justify-center shrink-0 p-1">
+                            <img id="img-preview" src="/assets/img/web/booky-logo.png" alt="Vista previa" class="w-full h-full object-contain">
+                        </div>
+                        
+                        <div class="flex-1">
+                            <input type="file" id="meta-image-file" accept="image/png" class="w-full text-xs text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer">
+                            <p id="image-validation-msg" class="text-xs text-gray-400 mt-1">Listo para procesar automáticamente todos los formatos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botones de Acción -->
+                <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                    <button type="submit" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2.5 px-4 rounded-lg transition shadow-sm text-center">
+                        Guardar y Generar Formatos Globales
+                    </button>
+                    <button type="button" onclick="resetearMetadatosFirestore()" class="bg-red-600 hover:bg-red-700 text-white font-medium py-2.5 px-4 rounded-lg transition shadow-sm flex items-center justify-center gap-2">
+                        🗑️ Restablecer / Borrar Firestore
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Canvas oculto para procesar el redimensionamiento automático -->
+    <canvas id="resize-canvas" style="display:none;"></canvas>
+
+    <!-- Script de lógica de administración -->
+    <script type="module" src="../assets/dist/settings/admin/admin-metadata.js"></script>
+</body>
+</html>
