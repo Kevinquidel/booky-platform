@@ -1,88 +1,123 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APIs de Imágenes y Texto IA — Booky</title>
-    <!-- Tailwind CSS para el diseño -->
-    <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claves de API · Booky Admin</title>
+  <script type="module" src="/assets/dist/settings/admin/load-metadata.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="m-0 bg-[#f4f7f6] font-sans text-[#152d37] antialiased">
 
     <!-- Barra de Navegación del Panel Admin -->
-    <header class="bg-gray-900 text-white shadow-md">
-        <div class="w-full px-6 py-3 flex justify-between items-center">
-            <h1 class="text-xl font-bold">Booky — Configuración de APIs (Imágenes y Textos IA)</h1>
-            <nav class="flex gap-4">
-                <a href="panel-admn.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Usuarios</a>
-                <a href="appointments-management.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Citas</a>
-                <a href="services-management.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Servicios</a>
-                <a href="api-settings.html" class="text-sm bg-blue-600 text-white px-3 py-1.5 rounded transition font-medium">APIs</a>
-                <a href="../index.html" class="text-sm bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded transition">Volver al sitio</a>
+    <header class="bg-gray-900 text-white shadow-lg border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-3.5 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <img src="/assets/img/web/Bookyx72.svg" alt="Booky" class="w-8 h-8">
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight leading-tight">Booky Admin</h1>
+                    <p class="text-xs text-gray-400">Configuración Global del Sitio</p>
+                </div>
+            </div>
+
+            <nav class="flex flex-wrap items-center gap-1.5" aria-label="Navegación de administración">
+                <a href="panel-admn.html" class="text-sm text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-lg transition">Usuarios</a>
+                <a href="appointments-management.html" class="text-sm text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-lg transition">Citas</a>
+                <a href="services-management.html" class="text-sm text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-lg transition">Servicios</a>
+                <a href="agenda-management.html" class="text-sm text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-lg transition">Agenda</a>
+                <a href="api-settings.html" class="text-sm text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-lg transition">APIs</a>
+                <a href="metadata-management.html" aria-current="page" class="text-sm text-white font-semibold bg-blue-600/90 px-3 py-2 rounded-lg shadow-sm transition">Metadatos</a>
+                <span class="h-5 w-px bg-gray-700 mx-1 hidden sm:inline-block"></span>
+                <a href="../index.html" class="text-sm text-gray-200 bg-gray-800 hover:bg-gray-700 border border-gray-700 px-3.5 py-2 rounded-lg font-medium transition">← Volver al sitio</a>
             </nav>
         </div>
     </header>
 
-    <!-- Contenido Principal -->
-    <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div class="bg-white rounded-lg shadow p-6 w-full space-y-8">
-            <div>
-                <h2 class="text-2xl font-semibold text-gray-800 mb-2">Gestión de Credenciales para Imágenes y Texto IA</h2>
-                <p class="text-gray-600">Configura y nombra libremente los servicios web o pasarelas que Booky utilizará para extraer las fotografías exactas y las descripciones inteligentes de cualquier servicio.</p>
+  <main class="mx-auto max-w-[1180px] px-6 pt-9 pb-14">
+    <div class="mb-7">
+      <span class="mb-2.5 inline-block rounded-full bg-[#e6f4f1] px-2.5 py-1 text-xs font-bold tracking-wider text-[#076457] uppercase">
+        Configuración del sistema
+      </span>
+      <h1 class="m-0 mb-1.5 text-[clamp(1.75rem,3vw,2.35rem)] font-bold tracking-tight text-[#10262d]">
+        Claves de API
+      </h1>
+      <p class="m-0 max-w-[65ch] text-[0.98rem] leading-relaxed text-[#526a70]">
+        Selecciona un proveedor externo, genera tu credencial en su portal oficial y guárdala para habilitar integraciones en Booky.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 items-start gap-6 lg:grid-cols-[minmax(0,1.35fr)_minmax(300px,0.85fr)]" id="layout">
+      <section class="rounded-2xl border border-[#d5e2df] bg-white p-7 shadow-[0_4px_20px_rgba(16,38,45,0.05)]">
+        <div class="mb-5 flex items-center justify-between gap-3 border-b border-[#d5e2df] pb-4">
+          <h2 class="m-0 text-[1.18rem] font-bold text-[#10262d]">Conectar una API</h2>
+          <span class="rounded-md bg-[#f4f7f6] px-2.5 py-1 text-xs font-semibold text-[#526a70]">Credenciales</span>
+        </div>
+
+        <div class="mb-5 rounded-[10px] border border-[#d5e2df] bg-[#f8fbfa] p-4">
+          <label for="options" class="mb-1.5 block text-[0.92rem] font-semibold text-[#152d37]">1. Elige el proveedor</label>
+          <select id="options" class="w-full rounded-[10px] border border-[#b5c7c2] bg-white px-3.5 py-2.5 text-[0.95rem] text-[#152d37] transition hover:border-[#076457] focus-visible:outline-3 focus-visible:outline-[#2b9ed8] focus-visible:outline-offset-2"></select>
+          <p id="guide" class="my-3 text-sm leading-relaxed text-[#526a70]"></p>
+          <a id="official" class="inline-flex cursor-pointer items-center justify-center gap-1.5 rounded-[10px] border border-[#076457] bg-white px-4 py-2.5 text-[0.92rem] font-semibold text-[#076457] no-underline transition hover:bg-[#e6f4f1] focus-visible:outline-3 focus-visible:outline-[#2b9ed8] focus-visible:outline-offset-2" target="_blank" rel="noopener noreferrer">
+            Obtener clave en sitio oficial ↗
+          </a>
+        </div>
+
+        <form id="credentials" autocomplete="off">
+          <fieldset id="fields" disabled class="m-0 min-w-0 border-0 p-0 disabled:pointer-events-none disabled:opacity-55">
+            <div id="manual" hidden class="mb-4 rounded-[10px] border border-dashed border-[#d5e2df] bg-[#f8fbfa] p-4">
+              <div class="mb-3.5 grid grid-cols-1 gap-3.5 sm:grid-cols-2">
+                <div>
+                  <label for="kind" class="mb-1.5 block text-[0.92rem] font-semibold text-[#152d37]">Categoría</label>
+                  <input id="kind" list="categories" placeholder="Ej. Imágenes" maxlength="80" class="w-full rounded-[10px] border border-[#b5c7c2] bg-white px-3.5 py-2.5 text-[0.95rem] text-[#152d37] transition hover:border-[#076457] focus-visible:outline-3 focus-visible:outline-[#2b9ed8] focus-visible:outline-offset-2">
+                  <datalist id="categories">
+                    <option>Imágenes</option>
+                    <option>Texto</option>
+                    <option>Mapas</option>
+                    <option>Clima</option>
+                    <option>Correo</option>
+                  </datalist>
+                </div>
+
+                <div>
+                  <label for="name" class="mb-1.5 block text-[0.92rem] font-semibold text-[#152d37]">Nombre del proveedor</label>
+                  <input id="name" placeholder="Nombre del servicio" maxlength="100" class="w-full rounded-[10px] border border-[#b5c7c2] bg-white px-3.5 py-2.5 text-[0.95rem] text-[#152d37] transition hover:border-[#076457] focus-visible:outline-3 focus-visible:outline-[#2b9ed8] focus-visible:outline-offset-2">
+                </div>
+              </div>
+
+              <div>
+                <label for="site" class="mb-1.5 block text-[0.92rem] font-semibold text-[#152d37]">Sitio oficial (opcional)</label>
+                <input id="site" type="url" placeholder="https://..." class="w-full rounded-[10px] border border-[#b5c7c2] bg-white px-3.5 py-2.5 text-[0.95rem] text-[#152d37] transition hover:border-[#076457] focus-visible:outline-3 focus-visible:outline-[#2b9ed8] focus-visible:outline-offset-2">
+              </div>
             </div>
 
-            <!-- Formulario Principal -->
-            <form id="booky-apis-form" class="space-y-8">
-                
-                <!-- SECCIÓN 1: APIS DE IMÁGENES -->
-                <div class="border border-gray-200 rounded-lg p-5 bg-gray-50/50">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-medium text-gray-800 flex items-center gap-2">
-                            <span>📷</span> APIs de Imágenes (Búsqueda Visual Exacta)
-                        </h3>
-                        <button type="button" id="add-image-api-btn" class="bg-white hover:bg-gray-100 text-blue-600 font-medium px-3 py-1.5 rounded border border-blue-200 text-xs transition shadow-sm">
-                            + Agregar API de Imagen
-                        </button>
-                    </div>
-                    <p class="text-xs text-gray-500 mb-4">Añade los motores, librerías o plataformas nombrándolos a tu gusto (ej. Unsplash, Pexels, Midjourney Web, etc.).</p>
-                    
-                    <!-- Contenedor dinámico hacia abajo para Imágenes -->
-                    <div id="image-apis-container" class="space-y-3">
-                        <!-- Las filas dinámicas se cargarán aquí -->
-                    </div>
-                </div>
+            <div class="mb-4">
+              <label for="key" class="mb-1.5 block text-[0.92rem] font-semibold text-[#152d37]">2. Pega tu clave de API</label>
+              <input id="key" type="password" placeholder="••••••••••••••••••••••••" autocomplete="new-password" autocapitalize="none" spellcheck="false" required class="w-full rounded-[10px] border border-[#b5c7c2] bg-white px-3.5 py-2.5 text-[0.95rem] text-[#152d37] transition hover:border-[#076457] focus-visible:outline-3 focus-visible:outline-[#2b9ed8] focus-visible:outline-offset-2">
+              <p id="help" class="mt-2 mb-3 text-[0.85rem] text-[#526a70]"></p>
+            </div>
 
-                <!-- SECCIÓN 2: APIS DE TEXTO / IA -->
-                <div class="border border-gray-200 rounded-lg p-5 bg-gray-50/50">
-                    <div class="flex justify-between items-center mb-4">
-                        <h3 class="text-lg font-medium text-gray-800 flex items-center gap-2">
-                            <span>✍️</span> APIs de Texto / IA (Generación de Descripciones)
-                        </h3>
-                        <button type="button" id="add-text-api-btn" class="bg-white hover:bg-gray-100 text-blue-600 font-medium px-3 py-1.5 rounded border border-blue-200 text-xs transition shadow-sm">
-                            + Agregar API de Texto/IA
-                        </button>
-                    </div>
-                    <p class="text-xs text-gray-500 mb-4">Añade los modelos de lenguaje o bases de texto nombrándolos como prefieras (ej. OpenAI GPT, Gemini API, Wikipedia Endpoint, etc.).</p>
-                    
-                    <!-- Contenedor dinámico hacia abajo para Textos -->
-                    <div id="text-apis-container" class="space-y-3">
-                        <!-- Las filas dinámicas se cargarán aquí -->
-                    </div>
-                </div>
+            <button id="apply" type="submit" hidden class="mt-2 inline-flex w-full cursor-pointer items-center justify-center rounded-[10px] border-0 bg-[#076457] px-4 py-3 text-[0.92rem] font-semibold text-white transition hover:bg-[#054d43] focus-visible:outline-3 focus-visible:outline-[#2b9ed8] focus-visible:outline-offset-2 disabled:cursor-wait">
+              Guardar clave de API
+            </button>
+          </fieldset>
+        </form>
 
-                <!-- Estado del Sistema y Botón de Guardado General -->
-                <div class="flex items-center justify-between pt-4 border-t border-gray-200">
-                    <span id="save-status" class="text-sm font-medium text-green-600 hidden">¡Credenciales guardadas correctamente en Firestore!</span>
-                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-2.5 rounded-lg transition text-sm shadow-sm ml-auto">
-                        Guardar Todas las Credenciales
-                    </button>
-                </div>
-
-            </form>
+        <div class="mt-4 flex items-center gap-2 rounded-lg border border-[#d5e2df] bg-[#f8fbfa] px-3.5 py-2.5">
+          <p id="status" role="status" class="m-0 min-h-[1.4em] text-[0.88rem] font-medium text-[#076457]">Comprobando permisos…</p>
         </div>
-    </main>
+      </section>
 
-    <!-- Script enlazado a la lógica de control de APIs -->
-    <script type="module" src="../assets/dist/settings/admin/admin-apis.js"></script>
+      <aside class="rounded-2xl border border-[#d5e2df] bg-white p-7 shadow-[0_4px_20px_rgba(16,38,45,0.05)]" id="saved-panel" hidden>
+        <div class="mb-5 flex items-center justify-between gap-3 border-b border-[#d5e2df] pb-4">
+          <h2 class="m-0 text-[1.18rem] font-bold text-[#10262d]">Claves guardadas</h2>
+          <span class="rounded-md bg-[#f4f7f6] px-2.5 py-1 text-xs font-semibold text-[#526a70]"><span id="count">0</span> activas</span>
+        </div>
+        <ul id="saved" class="m-0 grid list-none gap-3 p-0 [&_li]:grid [&_li]:gap-1 [&_li]:rounded-[10px] [&_li]:border [&_li]:border-[#d5e2df] [&_li]:bg-[#f8fbfa] [&_li]:p-3.5 [&_small]:text-[0.82rem] [&_small]:text-[#526a70] [&_code]:w-fit [&_code]:rounded-md [&_code]:border [&_code]:border-[#d5e2df] [&_code]:bg-white [&_code]:px-2 [&_code]:py-1 [&_code]:font-mono [&_code]:tracking-[0.08em]"></ul>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Script enlazado a la lógica de control de APIs -->
+  <script type="module" src="../assets/dist/settings/admin/admin-apis.js"></script>
 </body>
 </html>

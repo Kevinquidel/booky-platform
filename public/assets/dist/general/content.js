@@ -115,3 +115,26 @@ if (document.readyState === 'loading') {
 } else {
     loadContent();
 }
+
+window.cambiarIdiomaPolitica = function (lang) {
+  const esEl = document.getElementById("politica-es");
+  const enEl = document.getElementById("politica-en");
+  if (!esEl || !enEl) return;
+
+  esEl.style.display = lang === "es" ? "block" : "none";
+  enEl.style.display = lang === "en" ? "block" : "none";
+};
+
+window.cambiarIdiomaAbout = function (lang) {
+  const esHeader = document.getElementById("about-es");
+  const enHeader = document.getElementById("about-en");
+  const esCards = document.getElementById("about-cards-es");
+  const enCards = document.getElementById("about-cards-en");
+  if (!esHeader || !enHeader || !esCards || !enCards) return;
+
+  const es = lang === "es";
+  esHeader.style.display = es ? "block" : "none";
+  enHeader.style.display = es ? "none" : "block";
+  esCards.style.display = es ? "" : "none";
+  enCards.style.display = es ? "none" : "";
+};

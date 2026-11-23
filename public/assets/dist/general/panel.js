@@ -40,13 +40,13 @@ const navigationButtons = [
   },
   { 
     label: 'Mis Citas',
-    link: `${baseUrl}content/appointments.html`, // <- Cambiado a content/
+    link: `${baseUrl}content/appointments.html`,
     svg: `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM12 10c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>`,
     roles: ['cliente']
   },
   { 
     label: 'Perfil',
-    link: `${baseUrl}content/profile.html`, // <- Cambiado a content/
+    link: `${baseUrl}content/profile.html`,
     svg: `<svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>`,
     roles: ['cliente', 'moderador', 'admin', 'superadmin']
   },
@@ -85,26 +85,20 @@ function generateButtons(rolUsuario = 'cliente') {
       <span>${button.label}</span>
     `;
 
-// Interceptar el clic solo si NO es una página del dashboard
+    // Interceptar el clic solo si NO es una página del dashboard
     buttonElement.addEventListener('click', (event) => {
-      // Si la ruta incluye 'dashboard/', dejamos que el navegador abra la página con normalidad
       if (button.link.includes('dashboard/')) {
-        return; // Sale de la función y permite la recarga completa natural
+        return;
       }
 
-      event.preventDefault(); // Evita la recarga solo para las pestañas de la SPA
-      
-      // Actualiza la URL en la barra de direcciones sin refrescar la página
+      event.preventDefault();
       history.pushState({ path: button.link }, '', button.link);
-      
-      // Fuerza el evento popstate para que content.js detecte el cambio de vista
       window.dispatchEvent(new PopStateEvent('popstate', { state: { path: button.link } }));
-      
-      // Si manejas una función global de carga, la ejecutas aquí
+
       if (typeof cargarContenido === 'function') {
         cargarContenido(button.link);
       } else {
-        window.location.reload(); 
+        window.location.reload();
       }
     });
 
@@ -177,7 +171,6 @@ function generateButtons(rolUsuario = 'cliente') {
 onAuthStateChanged(auth, async (user) => {
   if (user) {
     try {
-      // Usando "USERS" en mayúsculas tal como lo tienes en tu panel de administración
       const userDocRef = doc(firestore, "USERS", user.uid);
       const userDoc = await getDoc(userDocRef);
       if (userDoc.exists()) {
@@ -203,7 +196,7 @@ onAuthStateChanged(auth, async (user) => {
 
 // ==========================================
 // PERSONALIZACION DEL PANEL //
-/////////////////////////////
+// ==========================================
 
 let panelElement = document.getElementById('main-navbar'); 
 let mainNavbar = document.getElementById('main-navbar'); 
@@ -442,97 +435,4 @@ function isDarkColor(color) {
   const [r, g, b] = hexToRgb(color);
   const brightness = (r * 299 + g * 587 + b * 114) / 1000;
   return brightness < 128;
-}
-
-const toggleButton = document.getElementById("toggle-button");
-if (toggleButton && footerNavigation) {
-  const newToggleButton = toggleButton.cloneNode(true);
-  toggleButton.parentNode.replaceChild(newToggleButton, toggleButton);
-  
-  newToggleButton.addEventListener("click", () => {
-    footerNavigation.classList.toggle("hidden");
-  });
-}
-
-function sincronizarConPanel() {
-  const panelSuperior = document.getElementById('main-navbar');
-  if (panelSuperior && footerNavigation) {
-    const bgImage = window.getComputedStyle(panelSuperior).backgroundImage;
-    const bgColor = window.getComputedStyle(panelSuperior).backgroundColor;
-
-    const esDegradadoBase = bgImage && (bgImage.includes('31, 31, 31') || bgImage.includes('44, 44, 44') || bgImage.includes('28, 28, 28'));
-
-    if (esDegradadoBase || bgImage === 'none') {
-      footerNavigation.style.backgroundImage = '';
-      footerNavigation.style.backgroundColor = '';
-    } else if (bgImage && bgImage !== 'none') {
-      footerNavigation.style.backgroundImage = bgImage;
-      footerNavigation.style.backgroundColor = '';
-    } else if (bgColor && bgColor !== 'rgba(0, 0, 0, 0)') {
-      footerNavigation.style.backgroundColor = bgColor;
-      footerNavigation.style.backgroundImage = '';
-    }
-  }
-}
-
-sincronizarConPanel();
-
-const panelSuperiorObserver = document.getElementById('main-navbar');
-if (panelSuperiorObserver && footerNavigation) {
-  const observer = new MutationObserver(() => {
-    sincronizarConPanel();
-  });
-  observer.observe(panelSuperiorObserver, { attributes: true, attributeFilter: ['style', 'class'] });
-}
-
-function cargarContenido(url) {
-  fetch(url)
-    .then(response => {
-      if (!response.ok) throw new Error('Error al cargar el contenido');
-      return response.text();
-    })
-    .then(html => {
-      const contenedor = document.getElementById('contenido');
-      if (contenedor) {
-        contenedor.innerHTML = html;
-      }
-    })
-    .catch(error => {
-      console.error('Error al cargar la página: ', error);
-    });
-}
-
-window.addEventListener('popstate', function(event) {
-  if (event.state && event.state.path) {
-    cargarContenido(event.state.path);
-  }
-});
-
-const menuItems = [
-  { label: 'Política y Términos de Uso', link: `${baseUrl}content/privacy/policy-and-terms.html`, image: `${baseUrl}assets/img/nav/terminos.svg` },
-  { label: 'Acerca de, Contacto', link: `${baseUrl}content/about/about.html`, image: `${baseUrl}assets/img/nav/acerca.svg` }
-];
-
-const footerMenu = document.getElementById("footer-menu");
-if (footerMenu) {
-  footerMenu.innerHTML = ''; 
-  menuItems.forEach(item => {
-    const menuItem = document.createElement('li');
-    const menuItemLink = document.createElement('a');
-    const menuItemImage = document.createElement('img');
-
-    menuItemLink.href = item.link;
-    menuItemLink.addEventListener('click', function(event) {
-      event.preventDefault(); 
-      cargarContenido(this.href); 
-      history.pushState({ path: this.href }, '', this.href);
-    });
-    
-    menuItemImage.src = item.image;
-    menuItemImage.alt = item.label;
-    menuItemLink.appendChild(menuItemImage);
-    menuItemLink.appendChild(document.createTextNode(item.label));
-    menuItem.appendChild(menuItemLink);
-    footerMenu.appendChild(menuItem);
-  });
 }

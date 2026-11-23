@@ -5,11 +5,10 @@ const footerMenu = document.getElementById("footer-menu");
 
 // Evento para alternar la visibilidad del menú
 if (toggleButton && footerNavigation) {
-  // Evitar duplicar el listener si el script se ejecuta más de una vez
   const newToggleButton = toggleButton.cloneNode(true);
-  toggleButton.parentNode.replaceChild(newToggleButton, toggleButton);
-  
-  newToggleButton.addEventListener("click", () => {
+  toggleButton.parentNode.replaceChild(nuevoToggleButton = newToggleButton, toggleButton);
+
+  nuevoToggleButton.addEventListener("click", () => {
     footerNavigation.classList.toggle("hidden");
   });
 }
@@ -21,8 +20,11 @@ function sincronizarConPanel() {
     const bgImage = window.getComputedStyle(panelSuperior).backgroundImage;
     const bgColor = window.getComputedStyle(panelSuperior).backgroundColor;
 
-    // Detectar si el panel tiene el degradado base/predeterminado oscuro inicial
-    const esDegradadoBase = bgImage && (bgImage.includes('31, 31, 31') || bgImage.includes('44, 44, 44') || bgImage.includes('28, 28, 28'));
+    const esDegradadoBase = bgImage && (
+      bgImage.includes('31, 31, 31') ||
+      bgImage.includes('44, 44, 44') ||
+      bgImage.includes('28, 28, 28')
+    );
 
     if (esDegradadoBase || bgImage === 'none') {
       footerNavigation.style.backgroundImage = '';
@@ -37,10 +39,8 @@ function sincronizarConPanel() {
   }
 }
 
-// Sincronizar al cargar la página
 sincronizarConPanel();
 
-// Vigilar cualquier cambio en tiempo real (pincel o restablecer)
 const panelSuperior = document.getElementById('main-navbar');
 if (panelSuperior && footerNavigation) {
   const observer = new MutationObserver(() => {
@@ -49,19 +49,20 @@ if (panelSuperior && footerNavigation) {
   observer.observe(panelSuperior, { attributes: true, attributeFilter: ['style', 'class'] });
 }
 
-// Función para cargar contenido sin recargar la página (SPA)
+// Función para cargar contenido sin recargar la página (SPA) en #app-view-container
 function cargarContenido(url) {
   fetch(url)
     .then(response => {
       if (!response.ok) {
-        throw new Error('Error al cargar el contenido');
+        throw new Error(`Error al cargar el contenido (${response.status}) en ${url}`);
       }
       return response.text();
     })
     .then(html => {
-      const contenedor = document.getElementById('contenido');
+      const contenedor = document.getElementById('app-view-container');
       if (contenedor) {
         contenedor.innerHTML = html;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     })
     .catch(error => {
@@ -79,15 +80,28 @@ window.addEventListener('popstate', function(event) {
   }
 });
 
+// Normalizar baseUrl desde index.html
+const raizBase = (typeof baseUrl === 'string' && baseUrl.trim() !== '')
+  ? baseUrl.replace(/\/+$/, '')
+  : '';
+
 // Creación de elementos del menú (Solo las páginas esenciales)
 const menuItems = [
-  { label: 'Política y Términos de Uso', link: `${baseUrl}content/privacy/policy-and-terms.html`, image: `${baseUrl}assets/img/nav/terminos.svg` },
-  { label: 'Acerca de, Contacto', link: `${baseUrl}content/about/about.html`, image: `${baseUrl}assets/img/nav/acerca.svg` }
+  {
+    label: 'Política y Términos de Uso',
+    link: `${raizBase}/content/privacy/policy-and-terms.html`,
+    image: `${raizBase}/assets/img/nav/terminos.svg`
+  },
+  {
+    label: 'Acerca de, Contacto',
+    link: `${raizBase}/content/about/about.html`,
+    image: `${raizBase}/assets/img/nav/acerca.svg`
+  }
 ];
 
-// CORRECCIÓN: Inyección limpia vaciando el ul primero para evitar duplicados
+// Inyección limpia vaciando el ul primero para evitar duplicados
 if (footerMenu) {
-  footerMenu.innerHTML = ''; 
+  footerMenu.innerHTML = '';
   menuItems.forEach(item => {
     const menuItem = document.createElement('li');
     const menuItemLink = document.createElement('a');
@@ -95,13 +109,18 @@ if (footerMenu) {
 
     menuItemLink.href = item.link;
     menuItemLink.addEventListener('click', function(event) {
-      event.preventDefault(); // Previene que el navegador recargue la página
-      cargarContenido(this.href); // Carga el contenido por AJAX
-      
+      event.preventDefault();
+
       // Actualiza la historia del navegador
-      history.pushState({ path: this.href }, '', this.href);
+      history.pushState({ path: item.link }, '', item.link);
+
+      // Dispara popstate para que content.js también se entere (igual que en panel.js)
+      window.dispatchEvent(new PopStateEvent('popstate', { state: { path: item.link } }));
+
+      // Carga el contenido dinámicamente en #app-view-container
+      cargarContenido(item.link);
     });
-    
+
     menuItemImage.src = item.image;
     menuItemImage.alt = item.label;
     menuItemLink.appendChild(menuItemImage);

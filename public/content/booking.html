@@ -1,3 +1,12 @@
+<script>
+    if (location.pathname === "/content/booking.html") {
+        const destino = new URL("/", location.origin);
+        destino.search = location.search;
+        destino.searchParams.set("view", "booking");
+        destino.hash = location.hash;
+        location.replace(destino.href);
+    }
+</script>
 <section class="booking-hero">
     <!-- Tarjeta de Cabecera -->
     <div class="booking-header-card">
@@ -7,7 +16,9 @@
 
     <!-- Cuadrícula o Contenedor Principal del Formulario -->
     <div class="booking-grid">
-        <div class="booking-item-card">
+        <booky-reserva class="booking-item-card" style="display:block">
+            <div data-estado role="status">Comprobando disponibilidad de la agenda…</div>
+            <div data-formulario hidden style="display:none">
             <h3>Nueva Reserva</h3>
             <p>Completa los campos a continuación para procesar tu cita con nuestros profesionales.</p>
             
@@ -39,11 +50,12 @@
                     Confirmar Reserva
                 </button>
             </form>
-        </div>
+            </div>
+        </booky-reserva>
     </div>
 </section>
 
 <!-- Script para procesar y guardar la reserva en la colección APPOINTMENT -->
-<script type="module" src="../assets/dist/settings/client/client-booking.js"></script>
+<script type="module" src="/assets/dist/settings/client/client-booking.js"></script>
 
-<script type="module" src="../assets/dist/general/content.js"></script>
+<script type="module" src="/assets/dist/general/content.js"></script>

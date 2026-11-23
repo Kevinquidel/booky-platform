@@ -1,21 +1,71 @@
-<!-- about-contact-donations.html -->
-<div class="about-contact">
-    <h1>Acerca de Nosotros, Contacto</h1>
-    
-    <!-- Sección Acerca de Nosotros -->
-    <section>
-        <h2>Acerca de Nosotros</h2>
-        <p>Somos Xalysna, un sitio web que busca inspirar y desbloquear el potencial humano a través de un espacio en constante transformación. Utilizamos la inteligencia artificial para crear y compartir contenido significativo que motive y empodere a nuestros visitantes. Fundados en [2023], nuestro compromiso radica en proporcionar fuentes infinitas de inspiración para ayudarte a alcanzar tus metas y sueños.</p>
-    </section>
+<!-- public/content/about/about.html -->
+<section class="home-hero about-contact" data-lang="es">
+    <div class="home-welcome-card">
+        <div class="lang-toggle">
+            <button type="button" onclick="cambiarIdiomaAbout('es')">Español</button>
+            <button type="button" onclick="cambiarIdiomaAbout('en')">English</button>
+        </div>
 
-    <!-- Sección Contacto -->
-    <section>
-        <h2>Contacto</h2>
-        <p>Si tienes preguntas, comentarios o necesitas soporte, no dudes en contactarnos. Aquí están nuestros detalles de contacto:</p>
-        <ul>
-            <li>Email: <a href="mailto:contact@xalysna.com">contact@xalysna.com</a></li>
-        </ul>
-    </section>
-</div>
+        <!-- ENCABEZADO ESPAÑOL -->
+        <div id="about-es">
+            <h2>Acerca de Nosotros y Contacto — Booky</h2>
+            <p>Plataforma web desarrollada como proyecto de sistemas para la gestión integral de citas, reservas y control de perfiles de usuario, con contacto directo a través de GitHub.</p>
+        </div>
+
+        <!-- ENCABEZADO ENGLISH -->
+        <div id="about-en" style="display: none;">
+            <h2>About Us &amp; Contact — Booky</h2>
+            <p>Web platform built as a systems project for comprehensive appointment scheduling, bookings, and user profile management, with direct contact via GitHub.</p>
+        </div>
+    </div>
+
+    <!-- TARJETAS ESPAÑOL -->
+    <div class="home-quick-stats" id="about-cards-es">
+        <div class="stat-card">
+            <h3>Acerca de Booky</h3>
+            <p>Somos <strong>Booky</strong>, una plataforma web desarrollada como proyecto de sistemas para la gestión integral de citas, reservas y control de perfiles de usuario, ofreciendo una experiencia ágil y organizada.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Nuestra Misión</h3>
+            <p>Facilitar la programación de citas, la administración de reservas y el control de servicios desde cualquier dispositivo de forma clara, segura y accesible.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Contacto y Soporte en GitHub</h3>
+            <p>Si tienes preguntas, sugerencias o necesitas enviarnos un mensaje, abre un ticket en <a href="https://github.com/Kevinquidel/booky-platform/issues" target="_blank" rel="noopener noreferrer">GitHub Issues (booky-platform)</a> o visita nuestro perfil en <a href="https://github.com/Kevinquidel" target="_blank" rel="noopener noreferrer">github.com/Kevinquidel</a>.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Políticas y Privacidad</h3>
+            <p>Consulta cómo manejamos los datos y las condiciones de uso de la plataforma en <a href="/content/privacy/policy-and-terms.html" onclick="cargarContenido('/content/privacy/policy-and-terms.html'); return false;">Política de Privacidad y Términos de Uso</a>.</p>
+        </div>
+    </div>
+
+    <!-- TARJETAS ENGLISH -->
+    <div class="home-quick-stats" id="about-cards-en" style="display: none;">
+        <div class="stat-card">
+            <h3>About Booky</h3>
+            <p>We are <strong>Booky</strong>, a web platform built as a systems project for comprehensive appointment scheduling, bookings, and user profile management, delivering a smooth and organized experience.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Our Mission</h3>
+            <p>Simplify appointment scheduling, booking management, and service control across devices in a clear, secure, and accessible way.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Contact &amp; Support on GitHub</h3>
+            <p>If you have questions, feedback, or want to send a message, open an issue on <a href="https://github.com/Kevinquidel/booky-platform/issues" target="_blank" rel="noopener noreferrer">GitHub Issues (booky-platform)</a> or visit our profile at <a href="https://github.com/Kevinquidel" target="_blank" rel="noopener noreferrer">github.com/Kevinquidel</a>.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>Policies &amp; Privacy</h3>
+            <p>Review how we handle data and platform terms in <a href="/content/privacy/policy-and-terms.html" onclick="cargarContenido('/content/privacy/policy-and-terms.html'); return false;">Privacy Policy and Terms of Use</a>.</p>
+        </div>
+    </div>
+</section>
+
+<script type="module" src="/assets/dist/general/content.js"></script>
 
 

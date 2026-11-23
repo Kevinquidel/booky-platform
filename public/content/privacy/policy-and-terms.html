@@ -1,26 +1,79 @@
-<!-- policy-and-terms.html -->
-<div class="policy-and-terms">
-    <h1>Política de Privacidad y Términos de Uso</h1>
-    
-    <!-- Introducción general -->
-    <section>
-        <p>Bienvenido a nuestra sección de Política de Privacidad y Términos de Uso. Aquí podrás encontrar toda la información relevante sobre las normas que rigen el uso de nuestros servicios y la protección de tus datos personales.</p>
-    </section>
+<!-- public/content/privacy/policy-and-terms.html -->
+<section class="home-hero policy-and-terms" data-lang="es">
+    <div class="home-welcome-card">
+        <div class="lang-toggle">
+            <button type="button" onclick="cambiarIdiomaPolitica('es')">Español</button>
+            <button type="button" onclick="cambiarIdiomaPolitica('en')">English</button>
+        </div>
 
-    <!-- Enlaces a documentos detallados -->
-    <section>
-        <h2>Explora nuestros documentos</h2>
-        <ul>
-            <li><a href="/content/privacy/full-privacy-policy-english.html" onclick="cargarContenido('/content/privacy/full-privacy-policy-english.html'); return false;">Privacy Policy - English</a></li>
-            <li><a href="/content/privacy/full-privacy-policy-spanish.html" onclick="cargarContenido('/content/privacy/full-privacy-policy-spanish.html'); return false;">Política de Privacidad Completa - Español</a></li>
-            <li><a href="/content/privacy/full-terms-of-use-english.html" onclick="cargarContenido('/content/privacy/full-terms-of-use-english.html'); return false;">Terms of Use - English</a></li>
-            <li><a href="/content/privacy/full-terms-of-use-spanish.html" onclick="cargarContenido('/content/privacy/full-terms-of-use-spanish.html'); return false;">Términos de Uso - Español</a></li>
-        </ul>
-    </section>
+        <!-- ENCABEZADO ESPAÑOL -->
+        <div id="politica-es">
+            <h2>Política de Privacidad y Términos de Uso — Booky</h2>
+            <p><strong>Última actualización:</strong> Noviembre de 2026. Conoce cómo protegemos tus datos personales y las normas de uso de nuestra plataforma de citas y reservas.</p>
+        </div>
 
-    <!-- Contacto para dudas o más información -->
-    <section>
-        <h2>¿Tienes preguntas?</h2>
-        <p>Si tienes preguntas sobre nuestras políticas o términos, no dudes en <a href="/content/privacy/contact-us.html" onclick="cargarContenido('/public/content/privacy/contact-us.html'); return false;">contactarnos</a>.</p>
-    </section>
-</div>
+        <!-- ENCABEZADO ENGLISH -->
+        <div id="politica-en" style="display: none;">
+            <h2>Privacy Policy and Terms of Use — Booky</h2>
+            <p><strong>Last updated:</strong> November 2026. Learn how we protect your personal data and the rules governing our appointment and booking platform.</p>
+        </div>
+    </div>
+
+    <!-- TARJETAS ESPAÑOL -->
+    <div class="home-quick-stats" id="politica-cards-es">
+        <div class="stat-card">
+            <h3>1. Información que recopilamos</h3>
+            <p>En <strong>Booky</strong> recopilamos los datos que proporcionas al crear tu cuenta o gestionar citas, como nombre, correo electrónico, información de perfil y registros de reservas o servicios.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>2. Uso de la información</h3>
+            <p>Utilizamos tus datos para operar la plataforma, administrar citas y reservas, mostrar tu perfil y roles correspondientes, mantener la seguridad de la sesión y mejorar el funcionamiento del servicio.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>3. Almacenamiento y seguridad</h3>
+            <p>Los datos de autenticación, perfiles y registros se gestionan mediante servicios en la nube y buenas prácticas de control de acceso. Aplicamos medidas razonables para proteger tu información.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>4. Términos de uso</h3>
+            <p>Al usar Booky te comprometes a proporcionar información veraz, no interferir con la plataforma ni intentar acceder a cuentas o datos sin autorización. Nos reservamos el derecho de suspender cuentas que infrinjan estas normas.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>5. Derechos y contacto</h3>
+            <p>Puedes actualizar tu información desde tu perfil o solicitar revisión o eliminación de tus datos. Si tienes dudas, consulta la sección <a href="/content/about/about.html" onclick="cargarContenido('/content/about/about.html'); return false;">Acerca de, Contacto</a>.</p>
+        </div>
+    </div>
+
+    <!-- TARJETAS ENGLISH -->
+    <div class="home-quick-stats" id="politica-cards-en" style="display: none;">
+        <div class="stat-card">
+            <h3>1. Information We Collect</h3>
+            <p>At <strong>Booky</strong>, we collect the information you provide when creating an account or managing appointments, such as your name, email address, profile details, and booking or service records.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>2. How We Use Information</h3>
+            <p>We use your information to run the platform, manage appointments and bookings, display your profile and assigned role, keep sessions secure, and improve service reliability.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>3. Storage and Security</h3>
+            <p>Authentication, profile data, and records are handled through cloud services and access controls. We apply reasonable safeguards to protect your data.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>4. Terms of Use</h3>
+            <p>By using Booky, you agree to provide accurate information, avoid disrupting the platform, and not attempt unauthorized access to accounts or data. We may suspend accounts that violate these terms.</p>
+        </div>
+
+        <div class="stat-card">
+            <h3>5. Rights and Contact</h3>
+            <p>You can update your details in your profile or request review or deletion of your data. If you have questions, visit <a href="/content/about/about.html" onclick="cargarContenido('/content/about/about.html'); return false;">About &amp; Contact</a>.</p>
+        </div>
+    </div>
+</section>
+
+<script type="module" src="/assets/dist/general/content.js"></script>

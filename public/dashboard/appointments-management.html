@@ -6,18 +6,33 @@
     <title>Gestión de Citas - Booky</title>
     <!-- Tailwind CSS para el diseño -->
     <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Script Dinámico de Metadatos (Centralizado desde Firestore) -->
+  <script src="/assets/dist/settings/admin/load-metadata.js" type="module"></script>
+
 </head>
 <body class="bg-gray-100 font-sans">
 
-    <!-- Barra de Navegación del Panel Admin -->
-    <header class="bg-gray-900 text-white shadow-md">
-        <div class="w-full px-6 py-3 flex justify-between items-center">
-            <h1 class="text-xl font-bold">Booky — Control de Citas</h1>
-            <nav class="flex gap-4">
-                <a href="panel-admn.html" id="nav-usuarios" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Usuarios</a>
-                <a href="appointments-management.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Citas</a>
-                <a href="services-management.html" class="text-sm text-gray-300 hover:text-white px-3 py-1.5 rounded transition">Servicios</a>
-                <a href="../index.html" class="text-sm bg-gray-700 hover:bg-gray-600 px-3 py-1.5 rounded transition">Volver al sitio</a>
+<!-- Barra de Navegación del Panel Admin -->
+    <header class="bg-gray-900 text-white shadow-lg border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-3.5 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <img src="/assets/img/web/Bookyx72.svg" alt="Booky" class="w-8 h-8">
+                <div>
+                    <h1 class="text-lg font-bold tracking-tight leading-tight">Booky Admin</h1>
+                    <p class="text-xs text-gray-400">Configuración Global del Sitio</p>
+                </div>
+            </div>
+
+            <nav class="flex flex-wrap items-center gap-1.5" aria-label="Navegación de administración">
+                <a href="panel-admn.html" class="text-sm text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-lg transition">Usuarios</a>
+                <a href="appointments-management.html" class="text-sm text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-lg transition">Citas</a>
+                <a href="services-management.html" class="text-sm text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-lg transition">Servicios</a>
+                <a href="agenda-management.html" class="text-sm text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-lg transition">Agenda</a>
+                <a href="api-settings.html" class="text-sm text-gray-300 hover:text-white hover:bg-gray-800 px-3 py-2 rounded-lg transition">APIs</a>
+                <a href="metadata-management.html" aria-current="page" class="text-sm text-white font-semibold bg-blue-600/90 px-3 py-2 rounded-lg shadow-sm transition">Metadatos</a>
+                <span class="h-5 w-px bg-gray-700 mx-1 hidden sm:inline-block"></span>
+                <a href="../index.html" class="text-sm text-gray-200 bg-gray-800 hover:bg-gray-700 border border-gray-700 px-3.5 py-2 rounded-lg font-medium transition">← Volver al sitio</a>
             </nav>
         </div>
     </header>
